@@ -1,0 +1,128 @@
+---
+const projects = [
+  {
+    url: "https://kibou-gastro.pages.dev/",
+    domain: "kibou-gastro.pages.dev",
+    img: "/img/site-kibou-gastro.png",
+    alt: "Site web du restaurant Le Kibou — gastronomique",
+    badge: "Gastronomique", badgeClass: "badge-orange",
+    name: "Le Kibou",
+    sub: "Restaurant gastronomique · Zogona, Ouagadougou",
+    tagline: "Une ambiance élégante et chaleureuse pour un restaurant haut de gamme. Menu illustré, réservation en un message, design soigné.",
+    tags: ["Menu illustré", "Réservation WhatsApp", "Mobile"],
+    waText: "Bonjour%20Nour%2C%20j'aime%20le%20style%20du%20site%20Le%20Kibou.%20Je%20voudrais%20un%20site%20comme%20%C3%A7a%20pour%20mon%20restaurant.",
+    anim: "d1"
+  },
+  {
+    url: "https://kibou-casual.pages.dev/",
+    domain: "kibou-casual.pages.dev",
+    img: "/img/site-kibou-bistro.png",
+    alt: "Site web du restaurant Le Kibou Bistro — convivial",
+    badge: "Bistro convivial", badgeClass: "badge-green",
+    name: "Le Kibou Bistro",
+    sub: "Bistro · Cuisine burkinabè · Ouagadougou",
+    tagline: "Le même restaurant, version décontractée et accessible. Menu par catégories avec photos, commande directe sur WhatsApp.",
+    tags: ["Menu par catégories", "Commande WhatsApp", "Mobile"],
+    waText: "Bonjour%20Nour%2C%20j'aime%20le%20style%20du%20site%20Le%20Kibou%20Bistro.%20Je%20voudrais%20un%20site%20comme%20%C3%A7a%20pour%20mon%20restaurant.",
+    anim: "d2"
+  },
+  {
+    url: "https://biterush-a6c.pages.dev/",
+    domain: "biterush-a6c.pages.dev",
+    img: "/img/site-biterush.png",
+    alt: "Site web du fast-food Bite Rush — pizzas, poulet, shawarma",
+    badge: "Fast-food", badgeClass: "badge-navy",
+    name: "Bite Rush",
+    sub: "Fast-food · Pizzas & Shawarma · Ouaga 2000",
+    tagline: "Énergique et appétissant, pensé pour la livraison rapide. Offre du jour, horaires d'ouverture en direct, commande en un message.",
+    tags: ["Offre du jour", "Commande WhatsApp", "Mobile"],
+    waText: "Bonjour%20Nour%2C%20j'aime%20le%20style%20du%20site%20Bite%20Rush.%20Je%20voudrais%20un%20site%20comme%20%C3%A7a%20pour%20mon%20commerce.",
+    anim: "d3"
+  }
+];
+---
+<section id="realisations" class="section" style="background:var(--bg3);">
+  <div class="container">
+    <div class="label">Réalisations</div>
+    <h2>Des sites qui donnent faim —<br>et qui font commander.</h2>
+    <p class="real-sub">Trois restaurants à Ouagadougou, trois ambiances. Cliquez pour visiter chaque site en ligne — ils fonctionnent vraiment, commande WhatsApp comprise.</p>
+    <div class="projects-grid">
+      {projects.map(p => (
+        <div class={`project-card anim ${p.anim}`}>
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+              {p.domain}
+            </div>
+          </div>
+          <img src={p.img} alt={p.alt} class="project-shot" loading="lazy" width="600" height="338">
+          <div class="project-body">
+            <div class="proj-header">
+              <span class={`proj-badge ${p.badgeClass}`}>{p.badge}</span>
+              <span class="live-chip"><span class="ld"></span>En ligne</span>
+            </div>
+            <div class="proj-name">{p.name}</div>
+            <div class="proj-sub">{p.sub}</div>
+            <p class="proj-tagline">{p.tagline}</p>
+            <div class="proj-tags">
+              {p.tags.map(t => <span class="proj-tag">{t}</span>)}
+            </div>
+            <div class="proj-actions">
+              <a href={p.url} class="btn-visit" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                Voir le site en ligne
+              </a>
+              <a href={`https://wa.me/22644608789?text=${p.waText}`} class="btn-clone" target="_blank" rel="noopener">Je veux ce style →</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.real-sub { font-size:15px; color:var(--text2); margin-bottom:36px; }
+.projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.project-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow-sm); transition:all 0.25s ease;
+  display:flex; flex-direction:column;
+}
+.project-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.browser-bar { display:flex; align-items:center; gap:9px; padding:9px 13px; background:#eef1f6; border-bottom:1px solid var(--border); }
+.browser-dots { display:flex; gap:5px; flex-shrink:0; }
+.browser-dots span { width:9px; height:9px; border-radius:50%; background:#cdd4df; }
+.browser-url {
+  flex:1; min-width:0; display:flex; align-items:center; gap:6px;
+  background:#fff; border:1px solid var(--border); border-radius:6px;
+  padding:4px 10px; font-size:11px; color:var(--text3);
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.browser-url svg { width:11px; height:11px; color:var(--green); flex-shrink:0; }
+.project-shot { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top center; background:var(--bg3); border-bottom:1px solid var(--border); }
+.project-body { padding:22px 22px 24px; display:flex; flex-direction:column; flex:1; }
+.proj-header { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:13px; }
+.proj-badge { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 11px; border-radius:100px; }
+.badge-orange { background:var(--orange-dim); border:1px solid var(--orange-border); color:var(--orange); }
+.badge-green  { background:var(--green-dim);  border:1px solid var(--green-border);  color:var(--green); }
+.badge-navy   { background:var(--navy-dim);   border:1px solid var(--navy-border);   color:var(--navy); }
+.live-chip { display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:4px 10px; border-radius:6px; background:var(--green-dim); border:1px solid var(--green-border); color:var(--green); }
+.live-chip .ld { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s ease-in-out infinite; }
+.proj-name { font-size:19px; font-weight:800; color:var(--navy); margin-bottom:3px; letter-spacing:-0.01em; }
+.proj-sub  { font-size:12px; color:var(--text3); margin-bottom:13px; }
+.proj-tagline { font-size:13.5px; color:var(--text2); line-height:1.6; margin-bottom:16px; flex:1; }
+.proj-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
+.proj-tag { font-size:11px; font-weight:500; color:var(--text2); background:var(--bg3); border:1px solid var(--border); padding:5px 10px; border-radius:7px; }
+.proj-actions { display:flex; flex-direction:column; gap:9px; margin-top:auto; }
+.btn-visit { display:flex; align-items:center; justify-content:center; gap:8px; font-size:13.5px; font-weight:700; text-decoration:none; padding:11px 16px; border-radius:10px; background:var(--navy); color:#fff; transition:all 0.2s; }
+.btn-visit:hover { background:#0a2150; transform:translateY(-1px); }
+.btn-visit svg { width:15px; height:15px; }
+.btn-clone { display:flex; align-items:center; justify-content:center; gap:7px; font-size:13px; font-weight:600; text-decoration:none; padding:10px 16px; border-radius:10px; border:1px solid var(--border); color:var(--text2); transition:all 0.2s; }
+.btn-clone:hover { border-color:var(--green); color:var(--green); background:var(--green-dim); }
+
+@media (max-width:1024px) { .projects-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:640px)  { .projects-grid { grid-template-columns:1fr; } }
+</style>

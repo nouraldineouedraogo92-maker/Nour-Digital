@@ -1,0 +1,99 @@
+---
+const wa = "https://wa.me/22644608789?text=Bonjour%20Nour%20!%20Je%20voudrais%20obtenir%20un%20devis%20gratuit%20pour%20mon%20commerce%20%C3%A0%20Ouaga.%20Pouvez-vous%20m'aider%20%3F";
+const solutions = [
+  {
+    num: "01",
+    problem: "Vos concurrents sont sur Google. Pas vous.",
+    consequence: "→ Quand quelqu'un cherche \"restaurant Ouaga\" ce soir, Google affiche vos concurrents — pas votre page Facebook.",
+    title: "Je vous mets sur Google et sur Google Maps",
+    desc: "Je configure votre site et votre fiche Google pour que vous apparaissiez quand vos futurs clients cherchent votre activité près de chez eux."
+  },
+  {
+    num: "02",
+    problem: "Votre page ne convainc pas en 10 secondes",
+    consequence: "→ Une page Facebook ressemble à toutes les autres. Le visiteur ne sait pas si vous êtes sérieux, où vous êtes, ni comment vous contacter vite.",
+    title: "Un site qui inspire confiance immédiatement",
+    desc: "Design sur mesure, infos claires, bouton WhatsApp visible. Le visiteur sait en 5 secondes qu'il est au bon endroit — et il vous écrit."
+  },
+  {
+    num: "03",
+    problem: "Illisible sur certains téléphones, lent en 3G",
+    consequence: "→ La majorité de vos clients naviguent sur mobile avec une connexion 3G. Un site lent ou mal affiché, c'est un client perdu en 3 secondes.",
+    title: "Parfait sur tous les téléphones, même en 3G",
+    desc: "Je conçois d'abord pour mobile. Images compressées, code optimisé — votre site s'affiche correctement sur un Tecno, un Samsung ou un iPhone, même avec une connexion lente."
+  },
+  {
+    num: "04",
+    problem: "Aucun canal de contact direct et rapide",
+    consequence: "→ Sur Facebook, votre client doit chercher votre numéro, envoyer un message qui se perd dans les notifications — ou abandonner.",
+    title: "Un bouton WhatsApp visible sur chaque page",
+    desc: "En un seul clic, votre client vous écrit directement sur WhatsApp. Pas besoin de chercher — c'est là, bien visible, à chaque page du site."
+  }
+];
+---
+<section id="solutions" class="section" style="background:var(--bg3);">
+  <div class="container">
+    <div class="label">Ce que les réseaux sociaux ne font pas pour vous</div>
+    <h2>Votre page Facebook vous donne des likes.<br>Voici ce qu'elle ne vous<br><span class="orange">donnera jamais.</span></h2>
+    <p class="solutions-intro">
+      Beaucoup de gérants de restaurants à Ouaga pensent qu'une page Facebook suffit. En réalité, elle vous rend invisible là où vos futurs clients cherchent vraiment. Voici les 4 problèmes concrets que je règle avec chaque site que je crée.
+    </p>
+    <div class="solutions-grid">
+      {solutions.map(s => (
+        <div class="solution-row anim">
+          <div class="sol-left">
+            <div class="sol-num">{s.num}</div>
+            <h3>{s.problem}</h3>
+            <p class="sol-consequence">{s.consequence}</p>
+          </div>
+          <div class="sol-right">
+            <div class="sol-check">✓</div>
+            <div class="sol-text">
+              <strong>{s.title}</strong>
+              {s.desc}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href={wa} class="btn btn-wa anim" target="_blank" rel="noopener">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Je veux qu'on règle ça pour mon commerce
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.solutions-intro { font-size:16px; color:var(--text2); max-width:580px; margin-bottom:48px; line-height:1.7; }
+.solutions-grid { display:flex; flex-direction:column; gap:10px; }
+.solution-row {
+  display:grid; grid-template-columns:1fr 1fr;
+  border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  background:var(--card); box-shadow:var(--shadow-sm);
+  transition:border-color 0.22s, box-shadow 0.22s;
+}
+.solution-row:hover { border-color:var(--border-hover); box-shadow:var(--shadow-md); }
+.sol-left { padding:26px 30px; border-right:1px solid var(--border); }
+.sol-num  { font-size:10px; font-weight:700; letter-spacing:0.2em; color:var(--text3); text-transform:uppercase; margin-bottom:8px; }
+.sol-left h3 { font-size:14px; font-weight:600; color:var(--text); margin-bottom:5px; }
+.sol-consequence { font-size:12px; color:var(--red); line-height:1.5; }
+.sol-right { padding:26px 30px; display:flex; align-items:flex-start; gap:12px; }
+.sol-check {
+  width:22px; height:22px; border-radius:50%;
+  background:var(--orange-dim); border:1.5px solid var(--orange-border);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--orange); font-size:11px; font-weight:700; flex-shrink:0; margin-top:1px;
+}
+.sol-text { font-size:13px; color:var(--text2); line-height:1.6; }
+.sol-text strong { color:var(--navy); display:block; margin-bottom:3px; font-size:14px; font-weight:600; }
+
+@media (max-width:640px) {
+  .solution-row { grid-template-columns:1fr; }
+  .sol-left { border-right:none; border-bottom:1px solid var(--border); }
+}
+@media (max-width:480px) {
+  .sol-left, .sol-right { padding:18px 16px; }
+}
+</style>

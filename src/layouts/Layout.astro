@@ -1,0 +1,72 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Création de Site Web pour Restaurants à Ouagadougou | Nour Digital",
+  description = "Je crée des sites web rapides pour les restaurants de Ouagadougou — visible sur Google, optimisé mobile & 3G, commande WhatsApp intégrée. Devis gratuit sous 2h."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f2d6e">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Création de Site Web à Ouagadougou | Nour Digital">
+  <meta property="og:description" content="Sites web pour les restaurants de Ouaga — visible sur Google, optimisé mobile. Devis gratuit sous 2h sur WhatsApp.">
+  <meta property="og:locale" content="fr_BF">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nour Digital — Sites Web · Ouagadougou">
+  <meta name="twitter:description" content="Sites web pour les restaurants de Ouaga. Visible sur Google, optimisé mobile & 3G.">
+
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nour Digital",
+    "description": "Création de sites web pour les restaurants de Ouagadougou. Sites rapides, visibles sur Google, optimisés mobile et connexion 3G.",
+    "telephone": "+22644608789",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ouagadougou",
+      "addressCountry": "BF"
+    },
+    "areaServed": { "@type": "City", "name": "Ouagadougou" },
+    "priceRange": "75 000 – 280 000 FCFA",
+    "currenciesAccepted": "XOF",
+    "openingHours": "Mo-Sa 08:00-20:00",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+22644608789",
+      "contactType": "customer service",
+      "availableLanguage": "fr"
+    }
+  })}</script>
+
+</head>
+<body>
+  <slot />
+  <script>
+    const navbar  = document.getElementById('navbar');
+    const waFloat = document.getElementById('wa-float');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', y > 40);
+      if (waFloat) waFloat.classList.toggle('visible', y > 150);
+    }, { passive: true });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.anim').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

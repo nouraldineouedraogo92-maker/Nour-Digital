@@ -1,0 +1,272 @@
+---
+const WA_LANDING = "https://wa.me/22644608789?text=Bonjour%20Nour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20formule%20Landing%20Express%20%C3%A0%2075%20000%20FCFA.%20J'aimerais%20qu'on%20en%20discute.";
+const WA_STARTER = "https://wa.me/22644608789?text=Bonjour%20Nour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20formule%20Site%20Starter%20%C3%A0%20150%20000%20FCFA.%20J'aimerais%20qu'on%20en%20discute.";
+const WA_PRO     = "https://wa.me/22644608789?text=Bonjour%20Nour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20formule%20Site%20Complet%20Pro%20%C3%A0%20280%20000%20FCFA.%20J'aimerais%20d%C3%A9marrer%20mon%20projet.";
+
+const CALENDAR_SVG = `<svg class="svg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="14" rx="2"/><path d="M4.5 9.5h15M8.5 3.5v4M15.5 3.5v4"/></svg>`;
+const CLOCK_SVG   = `<svg class="svg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.8V12l2.8 1.6"/></svg>`;
+const CARD_SVG    = `<svg class="svg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M3.5 10.5h17"/></svg>`;
+const WA_SVG      = `<svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+---
+<section id="pricing" class="section" style="background:var(--bg3);">
+  <div class="container">
+    <div class="label">Offres & Délais</div>
+    <h2>Des prix clairs, des délais<br><span class="orange">garantis, zéro surprise.</span></h2>
+    <p class="pricing-sub">Vous savez exactement ce que vous payez, ce que vous obtenez et combien de temps ça prend — avant même de commencer.</p>
+
+    <div class="guarantee-banner anim">
+      <span class="gb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M12 3l7 2.5v5.5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5V5.5L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <div><strong>Garantie maquette :</strong> Je vous montre le design avant de coder. Si ça ne vous convient pas, je le refais — gratuitement, sans discussion.</div>
+    </div>
+
+    <div class="offers-grid">
+      <!-- Landing Express -->
+      <div class="offer-card anim d1">
+        <div class="offer-bar" style="background:var(--orange);"></div>
+        <div class="offer-body">
+          <div class="offer-tier">Formule Débutant</div>
+          <div class="offer-name">Landing Express</div>
+          <div class="offer-price">
+            <span class="amount">75 000</span><span class="currency">FCFA</span>
+            <span class="period">Paiement en une fois</span>
+          </div>
+          <div class="offer-delay">
+            <span class="dl-label"><Fragment set:html={CLOCK_SVG}/>Délai garanti</span>
+            <span class="dl-value">7 à 10 jours</span>
+          </div>
+          <hr class="divider">
+          <ul class="features">
+            <li><span class="ck">✓</span> 1 page complète, optimisée mobile</li>
+            <li><span class="ck">✓</span> Bouton WhatsApp bien visible</li>
+            <li><span class="ck">✓</span> Design adapté à votre activité</li>
+            <li><span class="ck">✓</span> Hébergement inclus 1 an</li>
+            <li><span class="ck">✓</span> Renouvellement : 25 000 FCFA / an</li>
+            <li><span class="ck">✓</span> 30 jours de support inclus après livraison</li>
+            <li><span class="ck">✓</span> 1 demande de modification de contenu incluse</li>
+          </ul>
+          <a href={WA_LANDING} class="btn btn-outline-orange" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Je veux cette formule →</a>
+          <div class="payment-methods">Paiement : <span class="pm-badge pm-orange">Orange Money</span><span class="pm-badge pm-blue">Moov Money</span></div>
+        </div>
+      </div>
+
+      <!-- Site Starter -->
+      <div class="offer-card anim d2">
+        <div class="offer-bar" style="background:var(--orange);"></div>
+        <div class="offer-body">
+          <div class="offer-tier">Formule Visibilité</div>
+          <div class="offer-name">Site Starter</div>
+          <div class="offer-price">
+            <span class="amount">150 000</span><span class="currency">FCFA</span>
+            <span class="period">Paiement en une fois</span>
+          </div>
+          <div class="pay-2x"><Fragment set:html={CARD_SVG}/> Paiement en 2 fois · 75 000 FCFA × 2</div>
+          <div class="offer-delay">
+            <span class="dl-label"><Fragment set:html={CLOCK_SVG}/>Délai garanti</span>
+            <span class="dl-value">14 à 21 jours</span>
+          </div>
+          <hr class="divider">
+          <ul class="features">
+            <li><span class="ck">✓</span> Site 3 à 4 pages, optimisé mobile</li>
+            <li><span class="ck">✓</span> Design professionnel sur mesure</li>
+            <li><span class="ck">✓</span> Bouton WhatsApp intégré</li>
+            <li><span class="ck">✓</span> Formulaire de contact</li>
+            <li><span class="ck">✓</span> Référencement Google de base</li>
+            <li><span class="ck">✓</span> Fiche Google Maps configurée</li>
+            <li><span class="ck">✓</span> Hébergement inclus 1 an</li>
+            <li><span class="ck">✓</span> Renouvellement : 25 000 FCFA / an</li>
+            <li><span class="ck">✓</span> 30 jours de support inclus après livraison</li>
+            <li><span class="ck">✓</span> 2 demandes de modification de contenu incluses</li>
+          </ul>
+          <a href={WA_STARTER} class="btn btn-outline-orange" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Je veux cette formule →</a>
+          <div class="payment-methods">Paiement : <span class="pm-badge pm-orange">Orange Money</span><span class="pm-badge pm-blue">Moov Money</span></div>
+        </div>
+      </div>
+
+      <!-- Site Complet Pro (featured) -->
+      <div class="offer-card featured anim d3">
+        <div class="featured-badge">★ RECOMMANDÉE</div>
+        <div class="offer-bar" style="background:var(--navy);"></div>
+        <div class="offer-body" style="padding-top:32px;">
+          <div class="offer-tier">Formule Croissance</div>
+          <div class="offer-name">Site Complet Pro</div>
+          <div class="offer-price">
+            <span class="amount">280 000</span><span class="currency">FCFA</span>
+            <span class="period">Tout inclus · 1 an d'hébergement</span>
+          </div>
+          <div class="pay-2x"><Fragment set:html={CARD_SVG}/> Paiement en 2 fois · 140 000 FCFA × 2</div>
+          <div class="offer-delay">
+            <span class="dl-label"><Fragment set:html={CLOCK_SVG}/>Délai garanti</span>
+            <span class="dl-value">21 à 30 jours</span>
+          </div>
+          <hr class="divider">
+          <ul class="features">
+            <li><span class="ck">✓</span> Site complet (5 à 8 pages)</li>
+            <li><span class="ck">✓</span> Design premium sur mesure</li>
+            <li><span class="ck">✓</span> Optimisé mobile et rapide</li>
+            <li><span class="ck">✓</span> Bouton WhatsApp sur chaque page</li>
+            <li><span class="ck">✓</span> Référencement Google local</li>
+            <li><span class="ck">✓</span> Fiche Google Maps configurée</li>
+            <li><span class="ck">✓</span> Suivi des visites (Analytics)</li>
+            <li><span class="ck">✓</span> Hébergement inclus 1 an</li>
+            <li><span class="ck">✓</span> Renouvellement : 25 000 FCFA / an</li>
+            <li><span class="ck">✓</span> 30 jours de support inclus après livraison</li>
+            <li><span class="ck">✓</span> 3 demandes de modification de contenu incluses</li>
+          </ul>
+          <a href={WA_PRO} class="btn btn-navy" style="width:100%;justify-content:center;" target="_blank" rel="noopener">
+            <Fragment set:html={WA_SVG}/>
+            Démarrer avec cette formule
+          </a>
+          <div class="payment-methods">Paiement : <span class="pm-badge pm-orange">Orange Money</span><span class="pm-badge pm-blue">Moov Money</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloc délais -->
+    <div class="delays-block">
+      <div class="delays-block-title">Comment se calcule le délai</div>
+      <div class="delays-explainer">
+        <div class="de-card">
+          <div class="de-icon"><Fragment set:html={CLOCK_SVG}/></div>
+          <div>
+            <div class="de-title">Le délai démarre à l'avance</div>
+            <div class="de-desc">Le chronomètre ne tourne pas pendant la discussion. Il démarre <strong>le jour où je reçois votre avance et toutes les infos</strong> de votre commerce.</div>
+          </div>
+        </div>
+        <div class="de-card">
+          <div class="de-icon"><Fragment set:html={CALENDAR_SVG}/></div>
+          <div>
+            <div class="de-title">5 jours max pour valider chaque étape</div>
+            <div class="de-desc">Après chaque présentation (maquette ou site), vous avez <strong>5 jours pour me donner votre retour.</strong> Passé ce délai, on avance sur la base actuelle.</div>
+          </div>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="delays-table">
+          <thead>
+            <tr><th>Formule</th><th>Maquette</th><th>Création site</th><th>Vérification</th><th>Délai total garanti</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-name">Landing Express</td><td class="td-step">1–2 jours</td><td class="td-step">2–3 jours</td><td class="td-step">1–2 jours</td><td class="td-total"><span class="td-badge">7 à 10 jours</span></td></tr>
+            <tr><td class="td-name">Site Starter</td><td class="td-step">2–3 jours</td><td class="td-step">4–6 jours</td><td class="td-step">2–3 jours</td><td class="td-total"><span class="td-badge">14 à 21 jours</span></td></tr>
+            <tr><td class="td-name">Site Complet Pro</td><td class="td-step">3–4 jours</td><td class="td-step">7–10 jours</td><td class="td-step">2–3 jours</td><td class="td-total"><span class="td-badge">21 à 30 jours</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Garanties -->
+    <div class="guarantees-grid">
+      <div class="guarantee-card anim d1">
+        <div class="g-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M14.5 5.5l4 4"/><path d="M4 20l1.2-4L16 5.2l3 3L8.2 19 4 20z"/></svg></div>
+        <div class="g-title">Maquette validée avant tout</div>
+        <div class="g-desc">Vous voyez et approuvez le design avant que je code une seule ligne</div>
+      </div>
+      <div class="guarantee-card anim d2">
+        <div class="g-icon"><Fragment set:html={CALENDAR_SVG}/></div>
+        <div class="g-title">Délais respectés</div>
+        <div class="g-desc">Je livre à la date convenue. Si besoin, je vous préviens à l'avance</div>
+      </div>
+      <div class="guarantee-card anim d3">
+        <div class="g-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><circle cx="8.5" cy="12" r="3.5"/><path d="M12 12h7.5M16.5 12v3M19.5 12v2.5"/></svg></div>
+        <div class="g-title">Le site vous appartient</div>
+        <div class="g-desc">Dès le solde réglé, tous les accès vous sont transférés</div>
+      </div>
+      <div class="guarantee-card anim d4">
+        <div class="g-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M5 6.5A1.5 1.5 0 016.5 5h11A1.5 1.5 0 0119 6.5v7a1.5 1.5 0 01-1.5 1.5H9l-4 3.5V6.5z"/></svg></div>
+        <div class="g-title">30 jours de support inclus</div>
+        <div class="g-desc">Je reste disponible 30 jours après livraison pour toute question technique</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.pricing-sub { font-size:15px; color:var(--text2); margin-bottom:18px; }
+.guarantee-banner {
+  display:flex; align-items:center; gap:12px;
+  background:var(--navy-dim); border:1px solid var(--navy-border);
+  border-radius:12px; padding:15px 22px;
+  font-size:14px; color:var(--text2); margin-bottom:44px;
+}
+.guarantee-banner strong { color:var(--navy); }
+.gb-ic { display:flex; align-items:center; color:var(--navy); flex-shrink:0; }
+
+.offers-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:start; }
+.offer-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow-sm); transition:all 0.25s ease; position:relative;
+}
+.offer-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+.offer-card.featured { border:2px solid var(--navy); box-shadow:0 0 0 4px rgba(15,45,110,0.06),var(--shadow-md); }
+.featured-badge {
+  position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  background:var(--navy); color:#fff;
+  font-size:9px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase;
+  padding:5px 16px; border-radius:0 0 10px 10px; white-space:nowrap;
+}
+.offer-bar  { height:4px; width:100%; }
+.offer-body { padding:26px 24px; }
+.offer-tier { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--text3); margin-bottom:4px; }
+.offer-name { font-size:18px; font-weight:800; color:var(--navy); margin-bottom:16px; }
+.offer-price { margin-bottom:10px; }
+.offer-price .amount   { font-size:34px; font-weight:800; color:var(--navy); letter-spacing:-0.025em; }
+.offer-price .currency { font-size:13px; font-weight:700; color:var(--orange); margin-left:4px; }
+.offer-price .period   { font-size:11px; color:var(--text3); display:block; margin-top:4px; }
+.pay-2x { display:inline-flex; align-items:center; gap:6px; background:var(--green-dim); border:1px solid var(--green-border); color:var(--green); font-size:11px; font-weight:600; padding:4px 10px; border-radius:8px; margin-bottom:16px; }
+.offer-delay { display:flex; align-items:center; justify-content:space-between; background:var(--navy-dim); border:1px solid var(--navy-border); border-radius:10px; padding:10px 14px; margin-bottom:18px; }
+.dl-label { font-size:11px; color:var(--text3); display:flex; align-items:center; gap:6px; }
+.dl-label .svg-ic { width:14px; height:14px; color:var(--orange); }
+.dl-value { font-size:14px; font-weight:800; color:var(--navy); }
+.divider  { border:none; border-top:1px solid var(--border); margin:16px 0; }
+.features { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:22px; }
+.features li { display:flex; align-items:flex-start; gap:9px; font-size:13px; color:var(--text2); line-height:1.4; }
+.features li .ck { color:var(--orange); font-weight:700; font-size:11px; margin-top:2px; flex-shrink:0; }
+.payment-methods { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); font-size:11px; color:var(--text3); }
+.pm-badge { font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; border:1px solid; letter-spacing:0.04em; }
+.pm-orange { color:#f97316; border-color:rgba(249,115,22,0.3); background:rgba(249,115,22,0.05); }
+.pm-blue   { color:#0066cc; border-color:rgba(0,102,204,0.3); background:rgba(0,102,204,0.05); }
+.svg-ic { flex-shrink:0; vertical-align:middle; width:14px; height:14px; }
+
+.delays-block { margin-top:44px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px; box-shadow:var(--shadow-sm); }
+.delays-block-title { font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--text3); margin-bottom:24px; display:flex; align-items:center; gap:8px; }
+.delays-block-title::after { content:''; flex:1; height:1px; background:var(--border); }
+.delays-explainer { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px; }
+.de-card { background:var(--bg3); border:1px solid var(--border); border-radius:12px; padding:16px 18px; display:flex; align-items:flex-start; gap:12px; }
+.de-icon { flex-shrink:0; color:var(--navy); line-height:0; }
+.de-icon .svg-ic { width:22px; height:22px; }
+.de-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+.de-desc  { font-size:12px; color:var(--text2); line-height:1.55; }
+.de-desc strong { color:var(--orange); }
+.delays-table { width:100%; border-collapse:collapse; }
+.delays-table th { font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--text3); padding:10px 16px; text-align:left; border-bottom:1px solid var(--border); background:var(--bg3); }
+.delays-table td { font-size:13px; color:var(--text2); padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.delays-table tr:last-child td { border-bottom:none; }
+.delays-table tr:hover td { background:var(--bg3); }
+.td-name  { font-weight:700; color:var(--navy) !important; }
+.td-step  { font-size:12px; }
+.td-total { font-weight:800; color:var(--navy) !important; font-size:14px; }
+.td-badge { display:inline-block; font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; background:var(--orange-dim); border:1px solid var(--orange-border); color:var(--orange); }
+
+.guarantees-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:40px; }
+.guarantee-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 14px; text-align:center; box-shadow:var(--shadow-sm); transition:all 0.22s; }
+.guarantee-card:hover { border-color:var(--navy-border); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.g-icon  { width:46px; height:46px; margin:0 auto 12px; border-radius:12px; background:var(--navy-dim); color:var(--navy); display:flex; align-items:center; justify-content:center; }
+.g-icon .svg-ic { width:24px; height:24px; }
+.g-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.g-desc  { font-size:11px; color:var(--text3); line-height:1.5; }
+
+@media (max-width:900px) {
+  .offers-grid { grid-template-columns:1fr; }
+  .delays-explainer { grid-template-columns:1fr; }
+  .guarantees-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:480px) {
+  .delays-block { padding:20px 16px; }
+  .offer-body { padding:20px 18px; }
+  .delays-table { min-width:480px; }
+}
+@media (max-width:400px) {
+  .guarantees-grid { grid-template-columns:1fr; }
+}
+</style>

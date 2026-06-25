@@ -1,0 +1,96 @@
+---
+const steps = [
+  {
+    num: "01", title: "Discussion gratuite", badge: "WhatsApp", badgeClass: "badge-wa",
+    sub: "Sous 2h · Gratuit · Sans engagement",
+    vous: "Décrivez votre commerce en quelques minutes",
+    moi:  "J'analyse vos besoins et vous propose la formule adaptée à votre activité"
+  },
+  {
+    num: "02", title: "Accord & infos", badge: "Avance ici", badgeClass: "badge-pmt",
+    sub: "Orange Money · Moov Money · Espèces",
+    vous: "Envoyez vos photos & textes, versez l'avance",
+    moi:  "Je crée votre maquette sur mesure à partir de vos contenus"
+  },
+  {
+    num: "03", title: "Maquette & validation", badge: "J+2 à J+4", badgeClass: "badge-time",
+    sub: "Refaite gratuitement si non validée",
+    vous: "Validez le design ou demandez un ajustement",
+    moi:  "Je code votre site complet une fois le design validé"
+  },
+  {
+    num: "04", title: "Livraison & transfert", badge: "En ligne", badgeClass: "badge-live",
+    sub: "Accès complets · Le site vous appartient",
+    vous: "Vérifiez le site en ligne et réglez le solde",
+    moi:  "Je transfère tous les accès — le site vous appartient entièrement"
+  }
+];
+---
+<section id="process" class="section" style="background:var(--bg);">
+  <div class="container">
+    <div class="label">Comment ça marche</div>
+    <h2>De votre premier message<br>à votre site en ligne —<br><span class="orange">voici chaque étape.</span></h2>
+    <p class="process-sub">Pas de surprise, pas de flou. Vous savez exactement ce qui se passe — et ce que vous avez à faire à chaque moment.</p>
+    <div class="process-timeline">
+      <div class="process-timeline-line"></div>
+      {steps.map(s => (
+        <div class="proc-step anim">
+          <div class="proc-node">{s.num}</div>
+          <div>
+            <div class="proc-head">
+              <p class="proc-title">{s.title}</p>
+              <span class={`proc-badge ${s.badgeClass}`}>{s.badge}</span>
+            </div>
+            <p class="proc-sub-text">{s.sub}</p>
+            <div class="proc-roles">
+              <div class="proc-role proc-role-vous">
+                <span class="proc-role-label">Vous</span>
+                <p class="proc-role-desc">{s.vous}</p>
+              </div>
+              <div class="proc-role proc-role-moi">
+                <span class="proc-role-label">Moi</span>
+                <p class="proc-role-desc">{s.moi}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.process-sub { font-size:15px; color:var(--text2); margin-bottom:48px; max-width:560px; }
+.process-timeline { position:relative; max-width:760px; }
+.process-timeline-line {
+  position:absolute; left:27px; top:30px; bottom:30px; width:2px;
+  background:var(--border);
+}
+.proc-step {
+  display:grid; grid-template-columns:56px 1fr; gap:26px;
+  align-items:start; padding:18px 0;
+}
+.proc-node {
+  width:56px; height:56px; border-radius:50%;
+  background:var(--navy); color:var(--orange);
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; font-weight:800; letter-spacing:-0.01em;
+  box-shadow:0 0 0 6px var(--bg); position:relative; z-index:1;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.proc-step:hover .proc-node { transform:scale(1.06); box-shadow:0 0 0 6px var(--bg), 0 8px 24px rgba(15,45,110,0.18); }
+.proc-head { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.proc-title { font-size:19px; font-weight:700; color:var(--text); margin:0; }
+.proc-badge { font-size:11px; font-weight:700; letter-spacing:0.02em; padding:4px 12px; border-radius:100px; white-space:nowrap; }
+.badge-wa   { background:rgba(37,211,102,0.12); border:1px solid rgba(37,211,102,0.3); color:var(--green); }
+.badge-pmt  { background:var(--orange-dim); border:1px solid var(--orange-border); color:var(--orange); }
+.badge-time { background:var(--navy-dim); border:1px solid var(--navy-border); color:var(--navy); }
+.badge-live { background:rgba(37,211,102,0.12); border:1px solid rgba(37,211,102,0.3); color:var(--green); }
+.proc-sub-text { font-size:13px; color:var(--text3); margin:5px 0 0; }
+.proc-roles { display:flex; flex-direction:column; gap:8px; margin-top:15px; }
+.proc-role { display:flex; gap:12px; align-items:baseline; }
+.proc-role-label { font-size:10px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; flex-shrink:0; width:38px; }
+.proc-role-vous .proc-role-label { color:var(--orange); }
+.proc-role-moi  .proc-role-label { color:var(--navy); }
+.proc-role-desc { font-size:14px; color:var(--text2); line-height:1.5; margin:0; }
+</style>
