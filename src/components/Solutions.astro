@@ -10,6 +10,7 @@
     <!-- Avant / après : page Facebook vs site -->
     <div class="compare anim" id="compare">
       <div class="cmp-pane cmp-fb" aria-hidden="true">
+        <span class="cmp-tag cmp-tag-l">Page Facebook</span>
         <div class="fb-top"><span class="fb-logo">f</span><span class="fb-search">Rechercher sur Facebook</span><span class="fb-notif">12</span></div>
         <div class="fb-body">
           <div class="fb-side">
@@ -31,12 +32,14 @@
         <div class="cmp-flags"><span class="flag-bad">✕ Introuvable sur Google</span><span class="flag-bad">✕ Pas de menu ni de prix</span><span class="flag-bad">✕ Messages perdus</span></div>
       </div>
       <div class="cmp-pane cmp-site" aria-hidden="true">
-        <img src="/img/site-sous-le-manguier.webp" alt="" loading="lazy">
+        <span class="cmp-tag cmp-tag-r">Site Nour Digital</span>
+        <picture>
+          <source media="(max-width: 640px)" srcset="/img/site-sous-le-manguier-mobile.webp">
+          <img src="/img/site-sous-le-manguier.webp" alt="" loading="lazy">
+        </picture>
         <div class="cmp-flags right"><span class="flag-good">✓ Visible sur Google & Maps</span><span class="flag-good">✓ Menu & prix clairs</span><span class="flag-good">✓ Commande WhatsApp en 1 clic</span></div>
       </div>
       <div class="cmp-handle"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
-      <span class="cmp-tag cmp-tag-l">Page Facebook</span>
-      <span class="cmp-tag cmp-tag-r">Site Nour Digital</span>
       <input type="range" class="cmp-range" min="4" max="96" value="50" aria-label="Glisser pour comparer une page Facebook et un site Nour Digital">
     </div>
     <p class="cmp-hint">↔ Glissez le curseur pour comparer · exemple illustratif</p>
