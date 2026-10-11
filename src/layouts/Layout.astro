@@ -11,62 +11,460 @@ const {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
-  <meta name="description" content={description}>
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0f2d6e">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Création de Site Web à Ouagadougou | Nour Digital">
-  <meta property="og:description" content="Sites web pour les restaurants de Ouaga — visible sur Google, optimisé mobile. Devis gratuit sous 2h sur WhatsApp.">
-  <meta property="og:locale" content="fr_BF">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#3b1d0e">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Nour Digital — Sites Web · Ouagadougou">
-  <meta name="twitter:description" content="Sites web pour les restaurants de Ouaga. Visible sur Google, optimisé mobile & 3G.">
+<!-- Open Graph (partage réseaux sociaux) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Création de Site Web à Ouagadougou | Nour Digital">
+<meta property="og:description" content="Sites web pour les restaurants de Ouaga — visible sur Google, optimisé mobile. Devis gratuit sous 2h sur WhatsApp.">
+<meta property="og:locale" content="fr_BF">
 
-  <script type="application/ld+json">{JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Nour Digital",
-    "description": "Création de sites web pour les restaurants de Ouagadougou. Sites rapides, visibles sur Google, optimisés mobile et connexion 3G.",
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nour Digital — Sites Web · Ouagadougou">
+<meta name="twitter:description" content="Sites web pour les restaurants de Ouaga. Visible sur Google, optimisé mobile & 3G.">
+
+<!-- Schema.org LocalBusiness (référencement local Google) -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Nour Digital",
+  "description": "Création de sites web pour les restaurants de Ouagadougou. Sites rapides, visibles sur Google, optimisés mobile et connexion 3G.",
+  "telephone": "+22644608789",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ouagadougou",
+    "addressCountry": "BF"
+  },
+  "areaServed": { "@type": "City", "name": "Ouagadougou" },
+  "priceRange": "75 000 – 280 000 FCFA",
+  "currenciesAccepted": "XOF",
+  "openingHours": "Mo-Sa 08:00-20:00",
+  "contactPoint": {
+    "@type": "ContactPoint",
     "telephone": "+22644608789",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ouagadougou",
-      "addressCountry": "BF"
-    },
-    "areaServed": { "@type": "City", "name": "Ouagadougou" },
-    "priceRange": "75 000 – 280 000 FCFA",
-    "currenciesAccepted": "XOF",
-    "openingHours": "Mo-Sa 08:00-20:00",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+22644608789",
-      "contactType": "customer service",
-      "availableLanguage": "fr"
-    }
-  })}</script>
+    "contactType": "customer service",
+    "availableLanguage": "fr"
+  }
+}
+</script>
 
+<!-- Polices : préchargement non-bloquant (performance 3G) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet"></noscript>
+<script is:inline>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <slot />
-  <script>
-    const navbar  = document.getElementById('navbar');
-    const waFloat = document.getElementById('wa-float');
+  <script is:inline>
+(() => {
+  const RM   = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const onReveal = (el, fn) => el.classList.contains('in') ? fn() : el.addEventListener('reveal', fn, { once: true });
 
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (navbar) navbar.classList.toggle('scrolled', y > 40);
-      if (waFloat) waFloat.classList.toggle('visible', y > 150);
-    }, { passive: true });
+  function countTo(el, to, from = 0, dur = 1200) {
+    if (RM) { el.textContent = fmt(to); return; }
+    cancelAnimationFrame(el._raf);
+    const t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if (p < 1) el._raf = requestAnimationFrame(step);
+    };
+    el._raf = requestAnimationFrame(step);
+  }
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.anim').forEach(el => io.observe(el));
+  function confetti(x, y) {
+    if (RM) return;
+    const colors = ['#f97316', '#0f2d6e', '#25D366', '#e3a33a'];
+    for (let i = 0; i < 30; i++) {
+      const s = document.createElement('i');
+      s.className = 'confetti';
+      s.style.cssText = `left:${x}px;top:${y}px;background:${colors[i % 4]}`;
+      document.body.appendChild(s);
+      const a = Math.random() * Math.PI * 2, d = 50 + Math.random() * 110;
+      s.animate([
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d + 80}px) rotate(${Math.random() * 600}deg)`, opacity: 0 }
+      ], { duration: 900 + Math.random() * 600, easing: 'cubic-bezier(.2,.7,.4,1)' }).onfinish = () => s.remove();
+    }
+  }
+
+  /* ── Navbar, barre de progression, bouton WhatsApp ── */
+  const navbar = $('#navbar'), waFloat = $('#wa-float'), prog = $('#scroll-progress');
+  let ticking = false;
+  function onScroll() {
+    const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    navbar.classList.toggle('scrolled', y > 40);
+    waFloat.classList.toggle('visible', y > 150);
+    prog.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    updateTimeline();
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll);
+
+  /* ── Lien actif dans le menu ── */
+  const links = $$('.nav-links a');
+  const secIO = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(a => { const s = $(a.hash); if (s) secIO.observe(s); });
+
+  /* ── Apparition au scroll ── */
+  function reveal(el) {
+    el.style.animationPlayState = 'running';
+    el.classList.add('in');
+    el.dispatchEvent(new Event('reveal'));
+  }
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    reveal(e.target);
+    io.unobserve(e.target);
+  }), { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  // Fin de l'apparition : on libère "transform" pour les effets de survol / tilt
+  $$('.anim').forEach(el => el.addEventListener('animationend', e => {
+    if (e.target === el && e.animationName === 'fadeUp') el.classList.add('done');
+  }));
+  $$('#hero .anim').forEach(reveal);
+  $$('.anim:not(.in), .reveal').forEach(el => io.observe(el));
+
+  /* ════ HERO ════ */
+  requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('hero-ready')));
+
+  // Compteurs
+  const counters = $$('#hero [data-count]');
+  if (!RM) counters.forEach(el => { el.textContent = el.dataset.from || 0; });
+  setTimeout(() => counters.forEach(el => countTo(el, +el.dataset.count, +(el.dataset.from || 0), 1600)), 500);
+
+  // Mot qui tourne dans le badge
+  const rot = $('.rotator');
+  if (rot && !RM) {
+    const w = $('.rot-word', rot), words = ['restaurants', 'maquis', 'fast-foods', 'boulangeries', 'bars-restos'];
+    let i = 0;
+    setInterval(async () => {
+      i = (i + 1) % words.length;
+      w.classList.add('out');
+      await sleep(420);
+      w.classList.add('no-tr', 'below');
+      w.classList.remove('out');
+      w.textContent = words[i];
+      rot.style.width = w.offsetWidth + 'px';
+      void w.offsetWidth;
+      w.classList.remove('no-tr', 'below');
+    }, 2600);
+  }
+
+  // Recherche Google animée : le restaurant passe de « absent » à « présent » (aucune promesse de classement)
+  const gs = $('#gsearch');
+  if (gs) {
+    const typed = $('#gs-typed', gs), [a, b, you] = $$('.gs-res', gs);
+    const Q = 'restaurant ouaga';
+    let visible = true;
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(gs);
+    if (RM) {
+      typed.textContent = Q;
+      [a, b, you].forEach(r => r.classList.add('vis'));
+      you.classList.remove('ghost'); you.classList.add('top');
+    } else (async () => {
+      await sleep(1000);
+      for (;;) {
+        while (!visible || document.hidden) await sleep(500);
+        typed.textContent = '';
+        you.classList.remove('top'); you.classList.add('ghost');
+        await sleep(400);
+        for (const ch of Q) { typed.textContent += ch; await sleep(55 + Math.random() * 70); }
+        await sleep(350);
+        for (const r of [a, b]) { r.classList.add('vis'); await sleep(170); }
+        await sleep(300);
+        you.classList.add('vis');                                   // case vide : « n'apparaît pas encore »
+        await sleep(1600);
+        you.classList.remove('ghost'); you.classList.add('top');   // avec un site : il apparaît
+        await sleep(4300);
+        [a, b, you].forEach(r => r.classList.remove('vis'));
+        await sleep(700);
+      }
+    })();
+  }
+
+  // Halo du hero qui suit la souris
+  if (FINE && !RM) {
+    const hero = $('#hero');
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--gx', ((e.clientX - r.left) / r.width - 0.5) * 80 + 'px');
+      hero.style.setProperty('--gy', ((e.clientY - r.top) / r.height - 0.5) * 50 + 'px');
+    });
+  }
+
+  /* ── Menu mobile ── */
+  const menu = $('#mobile-menu');
+  if (menu) {
+    const close = () => menu.classList.remove('open');
+    $('#nav-toggle').addEventListener('click', () => menu.classList.add('open'));
+    $('#nav-close').addEventListener('click', close);
+    $$('.mobile-link', menu).forEach(l => l.addEventListener('click', close));
+    addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  /* ── Boutons magnétiques ── */
+  if (FINE && !RM) $$('.btn-magnetic').forEach(btn => {
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.22, y = (e.clientY - r.top - r.height / 2) * 0.35;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+  });
+
+  /* ── Spotlight sur les cartes ── */
+  if (FINE) $$('.solution-row, .project-card, .offer-card, .faq-item, .guarantee-card, .about-value, .quiz').forEach(c => {
+    c.classList.add('spot');
+    c.addEventListener('pointermove', e => {
+      const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', e.clientX - r.left + 'px');
+      c.style.setProperty('--my', e.clientY - r.top + 'px');
+    });
+  });
+
+  /* ════ AVANT / APRÈS ════ */
+  const cmp = $('#compare');
+  if (cmp) {
+    const range = $('.cmp-range', cmp);
+    const set = v => { v = Math.max(4, Math.min(96, v)); cmp.style.setProperty('--split', v + '%'); range.value = v; };
+    const fromX = e => { const r = cmp.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+    let drag = false;
+    cmp.addEventListener('pointerdown', e => {
+      drag = true;
+      cmp.classList.remove('hinting');
+      cmp.classList.add('dragging');
+      if (e.pointerType === 'mouse') { cmp.setPointerCapture(e.pointerId); fromX(e); }
+    });
+    cmp.addEventListener('pointermove', e => { if (drag) fromX(e); });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => cmp.addEventListener(t, () => { drag = false; cmp.classList.remove('dragging'); }));
+    range.addEventListener('input', () => { cmp.classList.remove('hinting'); set(+range.value); });
+    onReveal(cmp, async () => {
+      if (RM) return;
+      await sleep(600);
+      cmp.classList.add('hinting');
+      for (const v of [24, 76, 50]) {
+        if (!cmp.classList.contains('hinting')) return;
+        set(v);
+        await sleep(950);
+      }
+      cmp.classList.remove('hinting');
+    });
+  }
+
+  /* ════ COURSE DE VITESSE ════ */
+  const race = $('#race');
+  if (race) {
+    const lanes = $$('.race-lane', race);
+    let raf;
+    const paint = (l, t) => {
+      const T = +l.dataset.time, p = Math.min(1, t / T), fast = l.classList.contains('fast');
+      const v = fast ? 1 - Math.pow(1 - p, 2) : (p < 0.35 ? p * 0.5 : 0.175 + (p - 0.35) / 0.65 * 0.825);
+      $('.lane-fill', l).style.transform = `scaleX(${v})`;
+      $('.lane-time', l).textContent = Math.min(t, T).toFixed(1).replace('.', ',') + ' s';
+      l.classList.toggle('lost', !fast && t >= 3);
+      l.classList.toggle('finished', p >= 1);
+      return p >= 1;
+    };
+    const run = () => {
+      cancelAnimationFrame(raf);
+      if (RM) { lanes.forEach(l => paint(l, 99)); return; }
+      const t0 = performance.now();
+      const tick = now => {
+        const t = (now - t0) / 1000;
+        if (!lanes.map(l => paint(l, t)).every(Boolean)) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    onReveal(race, () => setTimeout(run, 500));
+    $('#race-btn').addEventListener('click', run);
+  }
+
+  /* ════ PROCESS : ligne de progression ════ */
+  const tl = $('.process-timeline'), tlFill = $('.process-timeline-fill'), steps = $$('.proc-step');
+  function updateTimeline() {
+    if (!tl) return;
+    const r = tl.getBoundingClientRect(), mid = innerHeight * 0.62;
+    const p = Math.max(0, Math.min(1, (mid - r.top - 30) / (r.height - 60)));
+    tlFill.style.transform = `scaleY(${p})`;
+    steps.forEach(s => s.classList.toggle('lit', $('.proc-node', s).getBoundingClientRect().top + 28 < mid));
+  }
+
+  // Discussion WhatsApp qui s'écrit
+  const chat = $('#wa-chat');
+  if (chat) onReveal(chat, async () => {
+    const msgs = $$('.msg', chat), typing = $('.wa-typing', chat), status = $('.wa-status', chat);
+    if (RM) { msgs.forEach(m => m.classList.add('show')); return; }
+    await sleep(400);
+    for (const m of msgs) {
+      if (m.classList.contains('them')) {
+        status.textContent = 'écrit…';
+        m.before(typing);
+        typing.classList.add('show');
+        await sleep(1400);
+        typing.classList.remove('show');
+        status.textContent = 'en ligne';
+      } else await sleep(800);
+      m.classList.add('show');
+    }
+  });
+
+  /* ════ RÉALISATIONS : tilt + vue mobile ════ */
+  $$('.project-card').forEach(card => {
+    const wrap = $('.shot-wrap', card), frame = $('iframe', card), btns = $$('.vt', card);
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      const mob = btn.dataset.view === 'mob';
+      btns.forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', b === btn); });
+      if (mob && !frame.getAttribute('src')) frame.src = frame.dataset.src;
+      wrap.classList.toggle('mob', mob);
+      card.style.transform = '';
+    }));
+    if (FINE && !RM) {
+      card.addEventListener('pointermove', e => {
+        if (wrap.classList.contains('mob')) return;
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) translateY(-6px)`;
+        wrap.style.setProperty('--shine-x', `${(0.5 - x) * 100}%`);
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    }
+  });
+
+  /* ════ TARIFS ════ */
+  const offers = $$('.offer-card');
+  offers.forEach(card => {
+    const amount = $('.amount', card), per = $('.period', card);
+    per.dataset.orig = per.textContent;
+    onReveal(card, () => countTo(amount, card.classList.contains('split') ? +amount.dataset.half : +amount.dataset.full, 0, 1100));
+  });
+  const pt = $('#pay-toggle');
+  if (pt) {
+    const pill = () => {
+      const act = $('.pt.active', pt);
+      pt.style.setProperty('--pw', act.offsetWidth + 'px');
+      pt.style.setProperty('--px', (act.offsetLeft - 4) + 'px');
+    };
+    pill();
+    addEventListener('resize', pill);
+    if (document.fonts) document.fonts.ready.then(pill);
+    $$('.pt', pt).forEach(btn => btn.addEventListener('click', () => {
+      const two = btn.dataset.mode === '2';
+      $$('.pt', pt).forEach(x => { x.classList.toggle('active', x === btn); x.setAttribute('aria-pressed', x === btn); });
+      pill();
+      offers.forEach(card => {
+        const amount = $('.amount', card), per = $('.period', card);
+        const half = +amount.dataset.half, full = +amount.dataset.full;
+        const split = two && half > 0;
+        card.classList.toggle('split', split);
+        card.classList.toggle('na', two && !half);
+        countTo(amount, split ? half : full, +amount.textContent.replace(/\s/g, '') || 0, 550);
+        per.textContent = split ? '2 versements : avance + solde à la livraison'
+                        : two   ? 'Paiement en une fois uniquement'
+                        : per.dataset.orig;
+      });
+    }));
+  }
+
+  // Quiz
+  const quiz = $('#quiz');
+  if (quiz) {
+    const qs = $$('.quiz-q', quiz), res = $('.quiz-result', quiz), bar = $('.quiz-progress span', quiz);
+    const F = [
+      { name: 'Page Express',  price: '75 000 FCFA',  delay: '4 à 6 jours',   id: 'offer-landing', why: 'Une page efficace avec votre bouton WhatsApp — idéal pour démarrer vite avec un petit budget.' },
+      { name: 'Site Starter',     price: '150 000 FCFA', delay: '8 à 12 jours',  id: 'offer-starter', why: 'Un vrai site de 3–4 pages avec votre menu, visible sur Google et Google Maps.' },
+      { name: 'Site Complet Pro', price: '280 000 FCFA', delay: '15 à 20 jours', id: 'offer-pro',     why: 'Le site complet, avec référencement Google local et suivi de vos visites.' }
+    ];
+    let answers = [];
+    const show = i => {
+      qs.forEach((q, k) => q.classList.toggle('active', k === i));
+      res.classList.toggle('active', i === qs.length);
+      bar.style.transform = `scaleX(${i / qs.length})`;
+    };
+    const finish = () => {
+      const f = F[Math.round(answers.reduce((s, v) => s + v, 0) / answers.length)];
+      $('.qr-name', res).textContent = f.name;
+      $('.qr-meta', res).textContent = `${f.price} · livré en ${f.delay}`;
+      $('.qr-why', res).textContent = f.why;
+      $('.qr-wa', res).href = 'https://wa.me/22644608789?text=' + encodeURIComponent(`Bonjour Nour, le quiz de votre site me recommande la formule ${f.name} (${f.price}). J'aimerais en discuter.`);
+      res.dataset.target = f.id;
+      show(qs.length);
+      const r = $('.qr-name', res).getBoundingClientRect();
+      confetti(r.left + 60, r.top + 12);
+    };
+    qs.forEach((q, i) => $$('button', q).forEach(btn => btn.addEventListener('click', () => {
+      answers[i] = +btn.dataset.v;
+      $$('button', q).forEach(x => x.classList.toggle('picked', x === btn));
+      setTimeout(() => (i < qs.length - 1 ? show(i + 1) : finish()), 260);
+    })));
+    $('.qr-see', res).addEventListener('click', () => {
+      const card = document.getElementById(res.dataset.target);
+      card.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
+      card.classList.remove('highlight');
+      void card.offsetWidth;
+      card.classList.add('highlight');
+    });
+    $('.qr-again', res).addEventListener('click', () => {
+      answers = [];
+      $$('.picked', quiz).forEach(x => x.classList.remove('picked'));
+      show(0);
+    });
+  }
+
+  /* ════ FAQ ════ */
+  $$('.faq-item').forEach(item => {
+    const q = $('.faq-q', item);
+    q.addEventListener('click', () => {
+      const open = !item.classList.contains('open');
+      item.classList.toggle('open', open);
+      q.setAttribute('aria-expanded', open);
+    });
+  });
+
+  /* ════ Bulle WhatsApp ════ */
+  const bubble = $('#wa-bubble');
+  if (bubble) {
+    const now = new Date(), day = now.getUTCDay(), h = now.getUTCHours();   // Ouagadougou = UTC+0
+    const online = day !== 0 && h >= 8 && h < 20;
+    $('#wa-state').textContent = online ? 'en ligne' : 'répond dès 8h';
+    bubble.classList.toggle('offline', !online);
+    waFloat.classList.toggle('offline', !online);
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem('nd-wa-bubble') === '1'; } catch (e) {}
+    if (!dismissed) (async () => {
+      await sleep(8000);
+      while (!waFloat.classList.contains('visible')) await sleep(600);
+      bubble.classList.add('show');
+      await sleep(RM ? 0 : 1500);
+      bubble.classList.add('typed');
+      await sleep(12000);
+      bubble.classList.remove('show');   // se referme seule pour ne pas gêner la lecture
+    })();
+    $('.wa-bubble-x', bubble).addEventListener('click', () => {
+      bubble.classList.remove('show');
+      try { sessionStorage.setItem('nd-wa-bubble', '1'); } catch (e) {}
+    });
+  }
+
+  onScroll();
+})();
   </script>
 </body>
 </html>
