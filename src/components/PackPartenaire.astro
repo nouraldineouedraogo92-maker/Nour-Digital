@@ -1,0 +1,112 @@
+---
+/* ═══ Pack Restaurant Partenaire ═══
+   À mettre à jour à chaque client signé : */
+const PLACES_TOTAL = 5;
+const PLACES_RESTANTES = 5;
+
+const WA = 'https://wa.me/22644608789?text=' + encodeURIComponent("DÉMO — Bonjour Nour, je suis intéressé par le Pack Restaurant Partenaire à 90 000 F. Je voudrais une démo gratuite pour mon restaurant.");
+
+const bonus = [
+  { t: 'Fiche Google Maps optimisée', d: "Vous apparaissez quand quelqu'un cherche « restaurant » près de chez vous : catégories, photos, horaires, lien de commande.", v: '25 000 F' },
+  { t: 'Votre resto ouvert 24 h/24', d: "Même fermé, vous recevez des précommandes : le client commande à 23 h, c'est prêt dès l'ouverture.", v: '20 000 F' },
+  { t: 'Kit Avis Google 5 étoiles', d: "Cartes QR « Laissez-nous un avis » + message de remerciement : plus d'avis, plus haut sur Google Maps.", v: '20 000 F' },
+  { t: 'Carte de fidélité « 10e plat offert »', d: 'À votre nom et à vos couleurs, prête à imprimer : vos clients reviennent.', v: '15 000 F' },
+  { t: 'Tableau de bord de votre resto', d: "Voyez quand vous voulez les visites de votre site, vos commandes et ce qu'elles vous rapportent.", v: '15 000 F' },
+];
+---
+<!-- ═══════════ PACK RESTAURANT PARTENAIRE ═══════════ -->
+<section id="pack" class="section">
+  <div class="container">
+    <div class="label">Programme Restaurants Partenaires</div>
+    <h2>Pas « juste un site ».<br><span class="orange">Tout pour que vos clients commandent vraiment.</span></h2>
+    <p class="pk-sub">Pour les <strong>5 premiers restaurants</strong> : le site de commande WhatsApp + 5 bonus, au prix Partenaire, <strong>sans rien payer d'avance</strong>.</p>
+
+    <div class="pk-grid">
+      <div class="pk-stack anim">
+        <div class="pk-head">📦 Votre Pack Restaurant Partenaire</div>
+        <div class="pk-row">
+          <div><b>Votre site de commande WhatsApp</b><small>Menu avec photos et prix, commande en 1 clic, bouton itinéraire, « Ouvert / Fermé » en direct, QR codes pour vos tables, espace restaurateur</small></div>
+          <span class="pk-v">75 000 F</span>
+        </div>
+        {bonus.map(b => (
+          <div class="pk-row pk-bonus">
+            <div><b><span class="pk-tag">🎁 Bonus</span> {b.t}</b><small>{b.d}</small></div>
+            <span class="pk-v">valeur {b.v}</span>
+          </div>
+        ))}
+        <div class="pk-row">
+          <div><b>✓ 3 mois de suivi inclus</b><small>Rapport mensuel de vos commandes + aide pour vos modifications (jusqu'à 10 demandes)</small></div>
+          <span class="pk-v">inclus</span>
+        </div>
+        <div class="pk-total">
+          <div class="pk-line"><span>Valeur totale</span><s>170 000 F</s></div>
+        </div>
+      </div>
+
+      <!-- Récapitulatif (reste visible pendant le défilement sur ordinateur) -->
+      <aside class="pk-recap anim d1">
+        <div class="pk-recap-top">Places au prix Partenaire</div>
+        <div class="pk-seats" aria-label={`${PLACES_RESTANTES} places restantes sur ${PLACES_TOTAL}`}>
+          {Array.from({ length: PLACES_TOTAL }, (_, i) => (
+            <span class={i < PLACES_TOTAL - PLACES_RESTANTES ? 'taken' : ''}>{i < PLACES_TOTAL - PLACES_RESTANTES ? '✓' : i + 1}</span>
+          ))}
+        </div>
+        <p class="pk-left"><strong>{PLACES_RESTANTES} place{PLACES_RESTANTES > 1 ? 's' : ''} restante{PLACES_RESTANTES > 1 ? 's' : ''}</strong> · ensuite 125 000 F avec 50 % d'avance</p>
+        <hr>
+        <div class="pk-line"><span>Valeur totale</span><s>170 000 F</s></div>
+        <div class="pk-line"><span>Prix normal</span><s>125 000 F</s></div>
+        <div class="pk-price"><span>Prix Partenaire</span><span class="pk-big">90 000 F</span></div>
+        <div class="pk-pay">✓ 0 F d'avance : vous payez en une fois, quand votre site est en ligne et validé par vous.</div>
+        <a href={WA} class="btn btn-wa btn-magnetic btn-shine pk-cta" target="_blank" rel="noopener">Écrivez « DÉMO » sur WhatsApp</a>
+        <p class="pk-roi">Remboursé en moins d'un mois : <strong>2 commandes de plus par jour</strong> × 2 500 F × 30 jours = <strong>150 000 F</strong>.</p>
+      </aside>
+    </div>
+    <p class="pk-note">Vous voulez seulement le site ? Les formules classiques sont juste en dessous. Le Pack Partenaire, c'est <strong>15 000 F de plus que la Page Express pour 95 000 F de bonus</strong>.</p>
+  </div>
+</section>
+
+<style>
+  #pack { background: linear-gradient(180deg, #fff7ec 0%, #fbf7f0 100%); }
+  .pk-sub { color: var(--text2); font-size: 18px; max-width: 720px; margin: -6px 0 36px; }
+  .pk-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: start; }
+  .pk-recap { position: sticky; top: 130px; background: var(--navy, #3b1d0e); color: #f3e6d6; border-radius: var(--radius, 20px); padding: 24px; box-shadow: var(--shadow-lg); }
+  .pk-recap-top { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ocre, #e3a33a); }
+  .pk-recap hr { border: 0; border-top: 1px solid rgba(255,255,255,.15); margin: 16px 0 14px; }
+  .pk-recap .pk-line { color: #d9c3a8; }
+  .pk-recap .pk-price { color: #fff; }
+  .pk-recap .pk-big { color: #4ade80; }
+  .pk-recap .pk-pay { color: #bbf7d0; font-weight: 600; font-size: 14px; margin-bottom: 16px; }
+  .pk-recap .pk-left { font-size: 14px; color: #e9d9c4; }
+  .pk-recap .pk-left strong { color: #fff; }
+  .pk-roi { font-size: 13px; color: #d9c3a8; margin-top: 12px; text-align: center; }
+  .pk-roi strong { color: #fff; }
+  .pk-note { margin-top: 22px; }
+  .pk-stack { background: var(--card, #fffdf9); border: 2px solid var(--navy, #3b1d0e); border-radius: var(--radius, 20px); overflow: hidden; box-shadow: var(--shadow-md); }
+  .pk-head { background: var(--navy, #3b1d0e); color: #fff7ec; padding: 16px 22px; font-weight: 800; font-size: 18px; }
+  .pk-row { display: flex; justify-content: space-between; gap: 14px; padding: 14px 22px; border-bottom: 1px dashed var(--border, #e8dcc8); }
+  .pk-row b { display: block; font-size: 16px; }
+  .pk-row small { display: block; color: var(--text2); font-size: 14px; line-height: 1.45; margin-top: 2px; }
+  .pk-tag { color: var(--orange); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; margin-right: 4px; }
+  .pk-v { white-space: nowrap; font-weight: 700; color: var(--text2); font-size: 14px; }
+  .pk-total { padding: 18px 22px; background: #fff4e3; }
+  .pk-line { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 6px; color: var(--text2); }
+  .pk-price { display: flex; justify-content: space-between; align-items: baseline; font-size: 20px; font-weight: 800; margin-top: 6px; }
+  .pk-big { font-size: 38px; color: var(--green, #17803f); letter-spacing: -.02em; }
+  .pk-pay { margin-top: 10px; font-size: 15px; font-weight: 700; color: var(--green, #17803f); }
+  .pk-side { display: flex; flex-direction: column; gap: 16px; }
+  .pk-card { background: var(--card, #fffdf9); border: 1px solid var(--border, #e8dcc8); border-radius: 16px; padding: 20px; }
+  .pk-card h3 { font-size: 18px; margin-bottom: 8px; }
+  .pk-card p { color: var(--text2); font-size: 15px; }
+  .pk-dark { background: var(--navy, #3b1d0e); border-color: var(--navy, #3b1d0e); }
+  .pk-dark h3 { color: #fff; }
+  .pk-dark p { color: #e9d9c4; }
+  .pk-dark strong { color: #fff; }
+  .pk-seats { display: flex; gap: 8px; margin: 14px 0 10px; }
+  .pk-seats span { flex: 1; height: 44px; border-radius: 10px; background: var(--ocre, #e3a33a); color: var(--navy, #3b1d0e); display: grid; place-items: center; font-weight: 900; }
+  .pk-seats span.taken { background: rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+  .pk-left { font-size: 14px !important; }
+  .pk-cta { width: 100%; justify-content: center; font-size: 17px; padding: 16px 20px; }
+  .pk-note { font-size: 14px; color: var(--text2); text-align: center; }
+  @media (max-width: 900px) { .pk-grid { grid-template-columns: 1fr; } .pk-recap { position: static; } }
+  @media (max-width: 560px) { .pk-row { flex-direction: column; gap: 4px; } .pk-big { font-size: 32px; } }
+</style>
