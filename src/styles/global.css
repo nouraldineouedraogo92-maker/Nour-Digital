@@ -1159,8 +1159,6 @@ h2 .orange, .hero-h1 .hl, .cta-card h2 .orange { font-style:italic; font-weight:
 .hero-stats { border-top-color:var(--border); }
 .hero-badge { background:rgba(194,65,12,.07); }
 
-/* Bandeau inspiré du Faso Dan Fani */
-.fdf { height:12px; background:repeating-linear-gradient(90deg, #c2410c 0 14px, #e3a33a 14px 20px, #3b1d0e 20px 34px, #fbf7f0 34px 38px, #1f6f4a 38px 46px, #fbf7f0 46px 50px); }
 
 /* ── Avant / après ── */
 .compare { border-radius:24px; }
@@ -1173,7 +1171,6 @@ h2 .orange, .hero-h1 .hl, .cta-card h2 .orange { font-style:italic; font-weight:
 
 /* ── Réalisations : section sombre brun café ── */
 #realisations { background:var(--brown-dark); position:relative; }
-#realisations::before { content:''; position:absolute; left:0; right:0; top:0; height:12px; background:repeating-linear-gradient(90deg, #c2410c 0 14px, #e3a33a 14px 20px, #3b1d0e 20px 34px, #fbf7f0 34px 38px, #1f6f4a 38px 46px, #fbf7f0 46px 50px); }
 #realisations h2 { color:var(--cream-text); }
 #realisations .real-sub { color:var(--cream-muted); }
 #realisations .label { background:rgba(227,163,58,.12); border-color:rgba(227,163,58,.32); color:var(--ocre); }
@@ -1202,7 +1199,6 @@ h2 .orange, .hero-h1 .hl, .cta-card h2 .orange { font-style:italic; font-weight:
 .cta-card .orange { color:var(--ocre); }
 .cta-card::before { background:radial-gradient(ellipse at top right, rgba(227,163,58,.22) 0%, transparent 60%); }
 footer { background:var(--brown-dark); border-top:0; position:relative; }
-footer::before { content:''; position:absolute; left:0; right:0; top:0; height:8px; background:repeating-linear-gradient(90deg, #c2410c 0 14px, #e3a33a 14px 20px, #3b1d0e 20px 34px, #fbf7f0 34px 38px, #1f6f4a 38px 46px, #fbf7f0 46px 50px); opacity:.9; }
 .footer-audit-card p strong { color:var(--ocre); }
 .footer-nav ul a:hover, .footer-bottom a:hover { color:var(--ocre); }
 

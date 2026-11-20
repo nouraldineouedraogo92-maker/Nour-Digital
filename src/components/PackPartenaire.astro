@@ -20,12 +20,13 @@ const bonus = [
     <div class="label">Programme Restaurants Partenaires</div>
     <h2>Pas « juste un site ».<br><span class="orange">Tout pour que vos clients commandent vraiment.</span></h2>
     <p class="pk-sub">Pour les <strong>5 premiers restaurants</strong> : le site de commande WhatsApp + 5 bonus, au prix Partenaire, <strong>sans rien payer d'avance</strong>.</p>
+    <div class="pk-test" data-new="on teste avant de payer"><span class="pk-test-ico">🧪</span><div><b>D'abord, on teste chez vous, gratuitement.</b> Je prépare votre menu avec vos plats et je pose les QR sur vos tables. Vos clients commandent sur WhatsApp. Après <strong>10 commandes</strong> (ou 3 semaines), je vous montre les chiffres : combien de commandes, combien de francs. <strong>Vous décidez ensuite.</strong> Le menu reste à vous, quoi qu'il arrive.</div></div>
 
     <div class="pk-grid">
       <div class="pk-stack anim">
         <div class="pk-head">📦 Votre Pack Restaurant Partenaire</div>
         <div class="pk-row">
-          <div><b>Votre site de commande WhatsApp</b><small>Menu avec photos et prix, commande en 1 clic, bouton itinéraire, « Ouvert / Fermé » en direct, QR codes pour vos tables, espace restaurateur</small></div>
+          <div><b>Votre site de commande WhatsApp</b><small>Menu avec photos et prix, commande en 1 clic, bouton itinéraire, « Ouvert / Fermé » en direct, chevalets QR imprimés à votre nom pour vos tables, espace restaurateur</small></div>
           <span class="pk-v">75 000 F</span>
         </div>
         {bonus.map(b => (
@@ -81,6 +82,9 @@ const bonus = [
   .pk-roi { font-size: 13px; color: #d9c3a8; margin-top: 12px; text-align: center; }
   .pk-roi strong { color: #fff; }
   .pk-note { margin-top: 22px; }
+  .pk-test { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 2px dashed var(--green, #17803f); border-radius: 16px; padding: 16px 18px; margin: -14px 0 30px; max-width: 860px; font-size: 16px; line-height: 1.5; color: var(--text2); }
+  .pk-test b { color: var(--text, #1d1d1f); }
+  .pk-test-ico { font-size: 26px; line-height: 1; }
   .pk-stack { background: var(--card, #fffdf9); border: 2px solid var(--navy, #3b1d0e); border-radius: var(--radius, 20px); overflow: hidden; box-shadow: var(--shadow-md); }
   .pk-head { background: var(--navy, #3b1d0e); color: #fff7ec; padding: 16px 22px; font-weight: 800; font-size: 18px; }
   .pk-row { display: flex; justify-content: space-between; gap: 14px; padding: 14px 22px; border-bottom: 1px dashed var(--border, #e8dcc8); }
