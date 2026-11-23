@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Email.astro';
+import '../styles/email.css';
+const WA = `https://wa.me/22644608789?text=${encodeURIComponent('DÉMO. Bonjour Nour, je voudrais une démo gratuite pour mon restaurant.')}`;
+---
+<Layout title="Page introuvable | Nour Digital" description="Cette page n'existe pas. Retrouvez les sites web et menus QR pour restaurants de Nour Digital à Ouagadougou." noindex>
+  <header class="nav">
+    <a class="logo" href="/" aria-label="Nour Digital, accueil"><img src="/img/logo-nour-digital.png" alt="Nour Digital, sites web pour restaurants" width="582" height="120"></a>
+  </header>
+  <main class="hero2 notfound">
+    <h1>Ce plat n’est pas <span class="y">au menu.</span></h1>
+    <p class="lede">La page que vous cherchez n’existe pas ou a changé d’adresse.</p>
+    <div class="hero-actions">
+      <a class="btn btn-white" href="/">Retour à l’accueil</a>
+      <a class="btn btn-wa" href={WA} target="_blank" rel="noopener">Écrire « DÉMO » sur WhatsApp</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .notfound { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+  .notfound h1 { font-size: clamp(44px, 8vw, 6rem); line-height: .92; letter-spacing: -0.03em; }
+  .notfound .y { color: var(--yolk); display: block; }
+  .notfound .lede { margin-top: 20px; color: #fff; }
+  .notfound .hero-actions { margin-top: 28px; }
+</style>

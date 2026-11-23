@@ -78,7 +78,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <div class="hero2-grid">
         <div class="hero2-copy">
           <h1 id="hero-title" class="cut"><span class="w">Vos</span> <span class="w">clients</span> <span class="w">commandent.</span> <span class="y"><span class="w">Vous</span> <span class="w">servez.</span></span></h1>
-          <p class="lede">Votre menu, avec photos et prix, sur le téléphone de vos clients. La commande arrive <strong>toute écrite sur votre WhatsApp</strong>, sans vous appeler. Votre site en ligne en 5 jours.</p>
+          <p class="lede">Site web et menu QR pour votre restaurant à Ouagadougou : vos plats, avec photos et prix, sur le téléphone de vos clients. La commande arrive <strong>toute écrite sur votre WhatsApp</strong>, sans vous appeler. Votre site en ligne en 5 jours.</p>
           <div class="hero-actions hero-actions-desk">
             <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
             <a class="link" href="#demos">Voir les sites de démo</a>
@@ -317,6 +317,12 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <span>© 2026 Nour Digital · Sites web pour restaurants · Ouagadougou, Burkina Faso</span>
     <a href={WA_DEMO} target="_blank" rel="noopener">WhatsApp : +226 44 60 87 89</a>
   </footer>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q.replace(/[«»]/g, '').trim(), acceptedAnswer: { '@type': 'Answer', text: a } })),
+  })} />
 
   <a class="wa-float" href={WA_DEMO} target="_blank" rel="noopener" aria-label="Écrire à Nour Digital sur WhatsApp"><Fragment set:html={waIcon} /></a>
 

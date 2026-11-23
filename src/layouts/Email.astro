@@ -2,11 +2,58 @@
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
+const SITE = 'https://nour-digital.com';
 const {
   title = "Création de Site Web pour Restaurants à Ouagadougou | Nour Digital",
-  description = "Sites web et menus pour les restaurants de Ouagadougou : vos clients commandent, la commande arrive toute écrite sur votre WhatsApp. Test gratuit, réponse sous 2 h."
+  description = "Site web et menu QR pour votre restaurant à Ouagadougou : vos clients commandent, la commande arrive toute écrite sur votre WhatsApp. Test gratuit.",
+  noindex = false,
 } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE).href;
+const ogImage = `${SITE}/img/og-nour-digital-v2.jpg`;
+
+/* Données structurées : l'entreprise locale, le site et les offres (mêmes prix que la page) */
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE}/#entreprise`,
+      name: 'Nour Digital',
+      alternateName: 'Nour Digital : sites web pour restaurants',
+      url: `${SITE}/`,
+      logo: `${SITE}/img/logo-nour-digital.png`,
+      image: ogImage,
+      description: "Création de sites web et de menus QR avec commande WhatsApp pour les restaurants, maquis et fast-foods de Ouagadougou.",
+      telephone: '+22644608789',
+      address: { '@type': 'PostalAddress', addressLocality: 'Ouagadougou', addressCountry: 'BF' },
+      areaServed: { '@type': 'City', name: 'Ouagadougou' },
+      priceRange: '75 000 – 280 000 FCFA',
+      currenciesAccepted: 'XOF',
+      paymentAccepted: 'Orange Money, Moov Money, espèces',
+      openingHours: 'Mo-Sa 08:00-20:00',
+      founder: { '@type': 'Person', name: 'Nour-Al-Dine OUEDRAOGO' },
+      sameAs: ['https://www.facebook.com/profile.php?id=61596502074874'],
+      contactPoint: { '@type': 'ContactPoint', telephone: '+22644608789', contactType: 'customer service', availableLanguage: 'fr' },
+      knowsAbout: ['site web restaurant', 'menu QR code', 'commande WhatsApp', 'référencement Google local', 'fiche Google Maps'],
+      makesOffer: [
+        { '@type': 'Offer', name: 'Pack Restaurant Partenaire', price: 90000, priceCurrency: 'XOF', description: "Site de commande WhatsApp + 5 bonus, 0 F d'avance, payé à la mise en ligne." },
+        { '@type': 'Offer', name: 'Page Express', price: 75000, priceCurrency: 'XOF', description: 'Une page complète avec commande WhatsApp, en ligne en 4 à 6 jours.' },
+        { '@type': 'Offer', name: 'Site Starter', price: 150000, priceCurrency: 'XOF', description: 'Site de 3 à 4 pages avec panier WhatsApp, en ligne en 8 à 12 jours.' },
+        { '@type': 'Offer', name: 'Site Complet Pro', price: 280000, priceCurrency: 'XOF', description: 'Site de 5 à 8 pages avec réservation, en ligne en 15 à 20 jours.' },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#site`,
+      url: `${SITE}/`,
+      name: 'Nour Digital',
+      inLanguage: 'fr',
+      publisher: { '@id': `${SITE}/#entreprise` },
+    },
+  ],
+};
 ---
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,8 +62,11 @@ const {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content={description}>
-<meta name="robots" content="index, follow">
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}>
+{!noindex && <link rel="canonical" href={canonical}>}
 <meta name="theme-color" content="#D3212A">
+<meta name="geo.region" content="BF-KAD">
+<meta name="geo.placename" content="Ouagadougou">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -25,35 +75,21 @@ const {
 <link rel="preload" href="/fonts/general-500.woff2" as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Nour Digital">
 <meta property="og:title" content="Nour Digital : vos clients commandent, vous servez">
-<meta property="og:description" content="Sites web et menus pour les restaurants de Ouaga. La commande arrive toute écrite sur votre WhatsApp.">
-<meta property="og:locale" content="fr_BF">
-<meta property="og:url" content="https://nour-digital.com/">
-<meta property="og:image" content="https://nour-digital.com/img/og-nour-digital.png">
+<meta property="og:description" content="Site web et menu QR pour les restaurants de Ouagadougou. La commande arrive toute écrite sur votre WhatsApp.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Nour Digital, sites web pour restaurants à Ouagadougou">
+<meta property="og:image:alt" content="Nour Digital : site web et menu QR avec commande WhatsApp pour les restaurants de Ouagadougou">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://nour-digital.com/img/og-nour-digital.png">
+<meta name="twitter:title" content="Nour Digital : vos clients commandent, vous servez">
+<meta name="twitter:description" content="Site web et menu QR pour les restaurants de Ouagadougou, commande WhatsApp.">
+<meta name="twitter:image" content={ogImage}>
 
-<script type="application/ld+json" is:inline>
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Nour Digital",
-  "url": "https://nour-digital.com/",
-  "logo": "https://nour-digital.com/img/logo-nour-digital.png",
-  "image": "https://nour-digital.com/img/og-nour-digital.png",
-  "description": "Création de sites web et de menus digitaux pour les restaurants de Ouagadougou, avec commande WhatsApp.",
-  "telephone": "+22644608789",
-  "address": { "@type": "PostalAddress", "addressLocality": "Ouagadougou", "addressCountry": "BF" },
-  "areaServed": { "@type": "City", "name": "Ouagadougou" },
-  "priceRange": "75 000 – 280 000 FCFA",
-  "currenciesAccepted": "XOF",
-  "openingHours": "Mo-Sa 08:00-20:00",
-  "contactPoint": { "@type": "ContactPoint", "telephone": "+22644608789", "contactType": "customer service", "availableLanguage": "fr" }
-}
-</script>
+{!noindex && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 <script is:inline>document.documentElement.classList.add('js')</script>
 </head>
 <body>
