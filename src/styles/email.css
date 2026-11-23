@@ -544,3 +544,34 @@ footer { margin: 0; border-radius: 0; }
 #pack { overflow: visible; }
 
 .lede-gap { margin-top: 20px; }
+
+/* ═══ V5 : 3 assiettes en haute qualité, plateau moins penché ═══ */
+.susan { transform: rotateX(46deg) rotateZ(var(--rot, 0deg)); top: 47%; }
+.dish { width: calc(var(--D) * .44); height: calc(var(--D) * .44); margin: calc(var(--D) * -.22) 0 0 calc(var(--D) * -.22); transform: rotate(var(--a)) translateY(calc(var(--D) * .25)); }
+.dish-plate img { filter: saturate(1.05); }
+.susan-view { height: calc(var(--D) * .86); }
+
+/* le bouton flottant reste caché tant que le haut de page (et son bouton DÉMO) est à l'écran */
+.wa-float { transition: transform .2s var(--ease), opacity .3s var(--ease), visibility .3s; }
+.hero-on .wa-float { opacity: 0; visibility: hidden; pointer-events: none; }
+
+@media (max-width: 760px) {
+  .susan-view { --D: min(104vw, 470px); height: calc(var(--D) * .84); }
+  .susan { top: 43%; }
+  /* nom et prix au centre, entre les flèches ; « Ajouter » en dessous, pleine largeur */
+  .susan-pick { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; grid-template-areas: "prev label next" "add add add"; gap: 10px 10px; }
+  #susan-prev { grid-area: prev; }
+  #susan-next { grid-area: next; }
+  .susan-label { grid-area: label; height: 44px; text-align: center; }
+  .susan-add { grid-area: add; width: 100%; min-height: 50px; }
+  .susan-name { font-size: 20px; }
+  .hero-actions-mob { margin-top: 12px; }
+  .susan-hint { margin-top: 8px; }
+}
+
+@media (min-width: 1081px) {
+  .susan-stage { --D: clamp(460px, 40vw, 620px); }
+  .susan-view { height: calc(var(--D) * .98); }
+  .susan { top: 46%; }
+  .susan-stage .order { top: auto; bottom: 96px; left: -4%; width: 290px; }
+}

@@ -12,8 +12,6 @@ const dishes = [
   { id: 'poulet', nom: 'Poulet braisé', prix: 2500, img: '/img/plats/poulet' },
   { id: 'carpe', nom: 'Carpe & riz', prix: 4500, img: '/img/plats/poisson' },
   { id: 'viande', nom: 'Viande braisée', prix: 2000, img: '/img/plats/viande' },
-  { id: 'filet', nom: 'Filet & riz', prix: 4000, img: '/img/plats/poisson2' },
-  { id: 'plantain', nom: 'Plantain braisé', prix: 500, img: '/img/plats/plantain' },
 ];
 const fcfa = (n: number) => n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' F';
 
@@ -96,7 +94,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <span class="susan-top"></span>
               {dishes.map((d, i) => (
                 <span class="dish" data-i={i} style={`--a:${(360 / dishes.length) * i}deg`}>
-                  <span class="dish-plate"><img src={`${d.img}-360.webp`} srcset={`${d.img}-360.webp 360w, ${d.img}.webp 640w`} sizes="(max-width: 760px) 140px, 240px" alt="" width="360" height="360" draggable="false"></span>
+                  <span class="dish-plate"><img src={`${d.img}-560.webp`} srcset={`${d.img}-420.webp 420w, ${d.img}-560.webp 560w, ${d.img}-720.webp 720w`} sizes="(max-width: 760px) 46vw, 290px" alt="" width="560" height="560" draggable="false"></span>
                 </span>
               ))}
             </div>
@@ -390,6 +388,8 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     }
     let inView = true;
     new IntersectionObserver(([e]) => { inView = e.isIntersecting; }).observe(view);
+    // le bouton WhatsApp flottant n'apparaît qu'une fois le haut de page passé
+    new IntersectionObserver(([e]) => { document.documentElement.classList.toggle('hero-on', e.isIntersecting); }, { rootMargin: '0px 0px -40% 0px' }).observe(document.getElementById('hero'));
 
     // ─── La commande ───
     function render(highlight = -1) {
@@ -435,7 +435,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     $('#order-reset').addEventListener('click', () => { qtys.fill(0); render(); });
 
     // départ
-    qtys[0] = 2; qtys[4] = 1; render(); paint(false);
+    qtys[0] = 2; qtys[2] = 1; render(); paint(false);
     requestAnimationFrame(tick);
 
     // ─── Titre qui tombe mot par mot ───

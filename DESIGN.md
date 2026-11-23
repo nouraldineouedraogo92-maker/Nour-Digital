@@ -266,7 +266,7 @@ Breakpoints: 1080px (grids collapse to one column, nav links hide), 760px (phone
 
 ## Elevation & Depth
 
-Flat bands, real depth only on objects. Bands carry a faint radial glaze from top-left (a lighter corner of the same hue) but no shadow. Depth belongs to things that would cast it on a real table: the lazy susan (3D perspective at rotateX 58deg, a dark wooden edge 22px below its top, a soft dark red shadow ellipse on the band), the plates (soft brown shadow, lifted further when in front), the WhatsApp bubble, and buttons (a short soft drop shadow).
+Flat bands, real depth only on objects. Bands carry a faint radial glaze from top-left (a lighter corner of the same hue) but no shadow. Depth belongs to things that would cast it on a real table: the lazy susan (3 plates, 3D perspective at rotateX 46deg, a dark wooden edge 22px below its top, a soft dark red shadow ellipse on the band), the plates (soft brown shadow, lifted further when in front), the WhatsApp bubble, and buttons (a short soft drop shadow).
 
 ### Shadow Vocabulary
 - **Button rest** (`box-shadow: 0 8px 16px -10px rgba(20,20,20,.6)`): every pill button.
