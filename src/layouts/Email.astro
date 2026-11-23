@@ -1,0 +1,62 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Création de Site Web pour Restaurants à Ouagadougou | Nour Digital",
+  description = "Sites web et menus pour les restaurants de Ouagadougou : vos clients commandent, la commande arrive toute écrite sur votre WhatsApp. Test gratuit, réponse sous 2 h."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#D3212A">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/fonts/cabinet-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/general-500.woff2" as="font" type="font/woff2" crossorigin>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nour Digital : vos clients commandent, vous servez">
+<meta property="og:description" content="Sites web et menus pour les restaurants de Ouaga. La commande arrive toute écrite sur votre WhatsApp.">
+<meta property="og:locale" content="fr_BF">
+<meta property="og:url" content="https://nour-digital.com/">
+<meta property="og:image" content="https://nour-digital.com/img/og-nour-digital.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nour Digital, sites web pour restaurants à Ouagadougou">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nour-digital.com/img/og-nour-digital.png">
+
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Nour Digital",
+  "url": "https://nour-digital.com/",
+  "logo": "https://nour-digital.com/img/logo-nour-digital.png",
+  "image": "https://nour-digital.com/img/og-nour-digital.png",
+  "description": "Création de sites web et de menus digitaux pour les restaurants de Ouagadougou, avec commande WhatsApp.",
+  "telephone": "+22644608789",
+  "address": { "@type": "PostalAddress", "addressLocality": "Ouagadougou", "addressCountry": "BF" },
+  "areaServed": { "@type": "City", "name": "Ouagadougou" },
+  "priceRange": "75 000 – 280 000 FCFA",
+  "currenciesAccepted": "XOF",
+  "openingHours": "Mo-Sa 08:00-20:00",
+  "contactPoint": { "@type": "ContactPoint", "telephone": "+22644608789", "contactType": "customer service", "availableLanguage": "fr" }
+}
+</script>
+<script is:inline>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<slot />
+</body>
+</html>

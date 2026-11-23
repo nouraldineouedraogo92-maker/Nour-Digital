@@ -1,30 +1,472 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import Solutions from '../components/Solutions.astro';
-import Process from '../components/Process.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Pricing from '../components/Pricing.astro';
-import PackPartenaire from '../components/PackPartenaire.astro';
-import About from '../components/About.astro';
-import FAQ from '../components/FAQ.astro';
-import CTAFinal from '../components/CTAFinal.astro';
-import Footer from '../components/Footer.astro';
-import WAFloat from '../components/WAFloat.astro';
-import '../styles/global.css';
+import Layout from '../layouts/Email.astro';
+import '../styles/email.css';
+
+const WA_NUM = '22644608789';
+const wa = (msg: string) => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
+const WA_DEMO = wa('DÉMO. Bonjour Nour, je voudrais une démo gratuite pour mon restaurant.');
+const WA_PACK = wa('DÉMO. Bonjour Nour, je suis intéressé par le Pack Restaurant Partenaire à 90 000 F. Je voudrais une démo gratuite pour mon restaurant.');
+
+/* Plats de la carte de démo (resto fictif, photos Unsplash, voir ASSETS-SOURCES.md) */
+const dishes = [
+  { id: 'poulet', nom: 'Poulet braisé', prix: 2500, img: '/img/plats/poulet' },
+  { id: 'carpe', nom: 'Carpe & riz', prix: 4500, img: '/img/plats/poisson' },
+  { id: 'viande', nom: 'Viande braisée', prix: 2000, img: '/img/plats/viande' },
+  { id: 'filet', nom: 'Filet & riz', prix: 4000, img: '/img/plats/poisson2' },
+  { id: 'plantain', nom: 'Plantain braisé', prix: 500, img: '/img/plats/plantain' },
+];
+const fcfa = (n: number) => n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' F';
+
+const bonus = [
+  { t: 'Fiche Google Maps optimisée', d: "Vous apparaissez quand quelqu'un cherche « restaurant » près de chez vous : catégories, photos, horaires, lien de commande.", v: '25 000 F' },
+  { t: 'Votre resto ouvert 24 h/24', d: "Même fermé, vous recevez des précommandes : le client commande à 23 h, c'est prêt dès l'ouverture.", v: '20 000 F' },
+  { t: 'Kit Avis Google 5 étoiles', d: "Cartes QR « Laissez-nous un avis » + message de remerciement : plus d'avis, plus haut sur Google Maps.", v: '20 000 F' },
+  { t: 'Carte de fidélité « 10e plat offert »', d: 'À votre nom et à vos couleurs, prête à imprimer : vos clients reviennent.', v: '15 000 F' },
+  { t: 'Tableau de bord de votre resto', d: "Voyez quand vous voulez les visites de votre site, vos commandes et ce qu'elles vous rapportent.", v: '15 000 F' },
+];
+
+const demos = [
+  { nom: 'Sous les Palmiers', kind: 'Maquis & grillades · Page Express', url: 'https://sous-les-palmiers.pages.dev/', img: '/img/site-sous-les-palmiers.webp', pos: 'left top', alt: 'Site du maquis de démo Sous les Palmiers', txt: 'Le client touche un plat : sa commande part sur WhatsApp, déjà rédigée. Programme de la semaine et statut « Ouvert / Fermé » en direct.' },
+  { nom: 'Allô Miam', kind: 'Fast-food & livraison · Site Starter', url: 'https://allo-miam.pages.dev/', img: '/img/site-allo-miam.webp', pos: 'left top', alt: 'Site du fast-food de démo Allô Miam', txt: 'Panier WhatsApp avec total et frais de livraison par quartier, offre du midi avec compte à rebours, précommande quand c’est fermé.' },
+  { nom: 'Néré', kind: 'Restaurant & lounge · Site Complet Pro', url: 'https://nere-lounge.pages.dev/', img: '/img/site-nere.webp', pos: '50% top', alt: 'Site du restaurant lounge de démo Néré', txt: 'Réservation par créneaux, agenda des soirées, privatisation, commande à emporter et carte avec QR code.' },
+];
+
+const plans = [
+  { nom: 'Page Express', prix: '75 000', delai: '4 à 6 jours', flag: '', top: ['1 page complète, optimisée mobile', 'Commande d’un plat en 1 clic sur WhatsApp', 'Bouton itinéraire Google Maps', 'Statut « Ouvert / Fermé » en direct', 'Espace restaurateur : carte, prix, photos, horaires'], more: ['Bouton WhatsApp bien visible', 'Programme de la semaine (matchs, soirées…)', 'Design adapté à votre restaurant', 'Hébergement inclus 1 an', '30 jours de support après livraison', '1 demande de modification de contenu incluse'] },
+  { nom: 'Site Starter', prix: '150 000', delai: '8 à 12 jours', flag: '', top: ['Site 3 à 4 pages, design sur mesure', 'Panier de commande WhatsApp (total calculé)', 'Zones et frais de livraison', 'Référencement Google de base', 'Fiche Google Maps configurée'], more: ['Bouton WhatsApp intégré', 'Bouton itinéraire Google Maps', 'Espace restaurateur : carte, prix, photos, horaires', 'Formulaire de contact', 'Hébergement inclus 1 an', '30 jours de support après livraison', '2 demandes de modification de contenu incluses'] },
+  { nom: 'Site Complet Pro', prix: '280 000', delai: '15 à 20 jours', flag: 'Recommandée', top: ['Site complet (5 à 8 pages), design premium', 'Réservation en ligne avec créneaux', 'Panier WhatsApp, sur place ou à emporter', 'Carte avec QR code pour vos tables', 'Référencement Google local à Ouaga'], more: ['Bouton WhatsApp sur chaque page', 'Page événements & privatisation', 'Espace restaurateur : carte, prix, photos, horaires', 'Fiche Google Maps configurée', 'Statistiques de visites de votre site', 'Hébergement inclus 1 an', '30 jours de support après livraison', '3 demandes de modification de contenu incluses'] },
+];
+
+const faqs = [
+  ['« J’ai déjà une page Facebook. »', 'Gardez-la ! Elle vous apporte des likes. Le site, lui, vous apporte des commandes : menu clair, prix, et commande toute écrite sur WhatsApp. On met même le lien du site sur votre page.'],
+  ['« C’est trop cher. »', 'Faites le calcul : 2 commandes de plus par jour à 2 500 F, c’est 150 000 F par mois. Le Pack Partenaire coûte 90 000 F, et vous ne payez rien avant que le site soit en ligne.'],
+  ['« Mes clients ne vont pas aller sur un site. »', 'Ils n’ont rien à installer : ils scannent le QR code sur la table ou cliquent sur le lien de votre statut WhatsApp. C’est plus simple que de vous appeler.'],
+  ['« Je n’ai pas le temps. »', 'Il vous faut environ 7 minutes au total : écrire « DÉMO », puis valider. Je récupère votre menu et vos photos moi-même, et je fais tout le reste.'],
+  ['« Je dois en parler à mon associé. »', 'Bien sûr. Demandez la démo gratuite : vous lui montrerez votre vrai site, avec le nom de votre restaurant. Ça facilite la discussion.'],
+  ['Comment vous faire confiance ?', 'C’est la question la plus légitime. Écrivez-moi sur WhatsApp, posez-moi toutes vos questions, jugez par vous-même comment je réponds. Si ça ne vous convient pas, vous ne perdez rien : la discussion est gratuite et sans engagement.'],
+  ['Pouvez-vous bloquer mon site après livraison ?', 'Non. Dès que le solde est réglé, je vous transfère tous les accès : hébergement, domaine, fichiers. Vous êtes le seul propriétaire. Je n’ai plus aucun accès à votre site sauf si vous me le demandez pour une modification.'],
+  ['Mon site marchera-t-il avec la connexion au Burkina ?', 'Oui. Je conçois des sites légers et rapides, qui se chargent correctement même en 3G : images compressées, code optimisé.'],
+  ['Puis-je modifier mon site moi-même ?', 'Oui. Depuis votre téléphone, vous changez votre carte, vos prix, vos photos, vos horaires et vos promos, sans risque de casser le site. Je vous montre comment faire à la livraison. Pour les gros changements, je reste disponible sur WhatsApp avec des tarifs annoncés à l’avance.'],
+  ['Combien de temps avant que le site me ramène des clients ?', 'Pour Google, les premiers résultats arrivent en 4 à 8 semaines : c’est le délai normal d’un nouveau site. Les premiers messages WhatsApp peuvent arriver dès la première semaine si vous partagez votre lien.'],
+  ['Et si le résultat ne me convient pas ?', 'Avant de coder une seule ligne, je vous montre une maquette. Vous l’approuvez, ou on l’ajuste gratuitement. On ne démarre la création qu’après votre validation.'],
+  ['Combien faut-il verser pour commencer ?', 'Restaurants partenaires : rien. Vous payez les 90 000 F en une fois, quand votre site est en ligne et que vous l’avez validé. Autres formules : 50 % par Orange Money, Moov Money ou en espèces, et le solde à la livraison.'],
+  ['Que comprend le renouvellement de 45 000 F par an ?', 'La première année d’hébergement est incluse. Ensuite, 45 000 F par an couvrent l’hébergement (pour que le site reste en ligne) et votre nom de domaine (l’adresse de votre site).'],
+];
+
+const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.760-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.870 9.870 0 0 1-5.030-1.380l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>`;
 ---
 <Layout>
-  <Navbar />
-  <Hero />
-  <Solutions />
-  <Process />
-  <Portfolio />
-  <PackPartenaire />
-  <Pricing />
-  <About />
-  <FAQ />
-  <CTAFinal />
-  <Footer />
-  <WAFloat />
+  <a class="sr-only" href="#hero">Aller au contenu</a>
+
+  <p class="promo"><span><b>Pack Partenaire</b> · 5 places<span class="promo-long"> · 90 000 F au lieu de 125 000 F</span> · 0 F d’avance</span> <a href="#pack">Voir l’offre</a></p>
+
+  <header class="nav">
+    <a class="logo" href="/" aria-label="Nour Digital, accueil"><img src="/img/logo-nour-digital.png" alt="Nour Digital, sites web pour restaurants" width="582" height="120"></a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#parcours">Comment ça marche</a></li>
+        <li><a href="#demos">Démos</a></li>
+        <li><a href="#pack">Pack Partenaire</a></li>
+        <li><a href="#formules">Formules</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-ink" href={WA_DEMO} target="_blank" rel="noopener">Écrire « DÉMO »</a>
+  </header>
+
+  <main>
+    <!-- HERO : pleine largeur, le plateau tournant -->
+    <section id="hero" class="hero2" aria-labelledby="hero-title">
+      <div class="hero2-grid">
+        <div class="hero2-copy">
+          <h1 id="hero-title" class="cut"><span class="w">Vos</span> <span class="w">clients</span> <span class="w">commandent.</span> <span class="y"><span class="w">Vous</span> <span class="w">servez.</span></span></h1>
+          <p class="lede">Votre menu, avec photos et prix, sur le téléphone de vos clients. La commande arrive <strong>toute écrite sur votre WhatsApp</strong>, sans vous appeler. Votre site en ligne en 5 jours.</p>
+          <div class="hero-actions hero-actions-desk">
+            <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+            <a class="link" href="#demos">Voir les sites de démo</a>
+          </div>
+          <p class="hero-free hero-actions-desk"><strong>Testez gratuitement :</strong> vos 10 premières commandes sont offertes.</p>
+        </div>
+
+        <div class="susan-stage" id="susan-stage">
+          <p class="susan-hint" id="susan-hint">Faites tourner le plateau, choisissez un plat</p>
+          <div class="susan-view" id="susan-view">
+            <div class="susan" id="susan" aria-hidden="true">
+              <span class="susan-edge"></span>
+              <span class="susan-top"></span>
+              {dishes.map((d, i) => (
+                <span class="dish" data-i={i} style={`--a:${(360 / dishes.length) * i}deg`}>
+                  <span class="dish-plate"><img src={`${d.img}-360.webp`} srcset={`${d.img}-360.webp 360w, ${d.img}.webp 640w`} sizes="(max-width: 760px) 140px, 240px" alt="" width="360" height="360" draggable="false"></span>
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="susan-pick" role="group" aria-label="Plats du restaurant de démo">
+            <button type="button" class="susan-arrow" id="susan-prev" aria-label="Plat précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="susan-label" aria-live="polite">
+              <span class="susan-name" id="susan-name">{dishes[0].nom}</span>
+              <span class="susan-price" id="susan-price">{fcfa(dishes[0].prix)}</span>
+            </div>
+            <button type="button" class="susan-add" id="susan-add">Ajouter <span class="sr-only">à la commande</span></button>
+            <button type="button" class="susan-arrow" id="susan-next" aria-label="Plat suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+
+          <div class="order" aria-live="polite">
+            <p class="toast" id="toast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1Z"/></svg>Nouvelle commande reçue</p>
+            <div class="bubble" id="bubble">
+              <span class="who">Ce que le resto reçoit sur WhatsApp</span>
+              <div id="bubble-body"><p class="empty">Ajoutez un plat pour composer la commande.</p></div>
+              <span class="typing" id="typing" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="meta">12:30 · lu</span>
+            </div>
+            <div class="order-foot"><span>Exemple : carte de démo (resto fictif)</span><button type="button" id="order-reset">Vider</button></div>
+          </div>
+        </div>
+
+        <div class="hero-actions hero-actions-mob">
+          <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+          <p class="hero-free"><strong>Testez gratuitement :</strong> vos 10 premières commandes sont offertes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le problème : plateau blanc -->
+    <section class="tray t-white" aria-labelledby="loss-title">
+      <div class="wrap">
+        <div class="loss-grid">
+          <div>
+            <h2 id="loss-title" class="loss-title">12 h 30. Le téléphone sonne <span class="r">pendant le service.</span></h2>
+            <p class="lede lede-gap">Personne ne décroche. Le client affamé ne rappelle pas : il commande ailleurs.</p>
+          </div>
+          <p class="loss-sum">Exemple : 3 clients perdus par jour × 2 500 F × 30 jours =
+            <span class="big">225 000 F</span>
+            <span class="loss-note">perdus chaque mois. Avec 1 seul client perdu par jour, c’est déjà 75 000 F.</span>
+          </p>
+        </div>
+
+        <div class="versus" role="table" aria-label="Page Facebook comparée à un site Nour Digital">
+          <div class="versus-row versus-head" role="row"><span role="columnheader">Votre page Facebook</span><span role="columnheader">Un site Nour Digital</span></div>
+          <div class="versus-row" role="row"><span class="bad" role="cell">Introuvable quand on cherche « restaurant » sur Google</span><span class="good" role="cell">Visible sur Google et Google Maps</span></div>
+          <div class="versus-row" role="row"><span class="bad" role="cell">« Le menu ? Demandez en inbox »</span><span class="good" role="cell">Menu, photos et prix clairs</span></div>
+          <div class="versus-row" role="row"><span class="bad" role="cell">Messages perdus dans les notifications</span><span class="good" role="cell">Commande écrite sur WhatsApp en 1 clic</span></div>
+          <div class="versus-row" role="row"><span class="bad" role="cell">Lent et lourd en 3G</span><span class="good" role="cell">Léger : s’affiche même en 3G, sur un Tecno comme sur un iPhone</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le parcours : une seule ligne -->
+    <section id="parcours" class="path" aria-labelledby="path-title">
+      <div class="wrap">
+        <h2 id="path-title" class="h2">Du premier message à votre première commande.</h2>
+        <div class="rail" id="rail">
+          <span class="rail-fill" id="rail-fill" aria-hidden="true"></span>
+          <span class="here" id="here" aria-hidden="true"></span>
+          <div class="station">
+            <h3>Vous écrivez « DÉMO »</h3>
+            <p>Sur WhatsApp, en 10 secondes. Je vous réponds en moins de 2 heures.</p>
+            <span class="tag">Gratuit</span>
+          </div>
+          <div class="station">
+            <h3>Je pose votre menu</h3>
+            <p>Avec vos plats, vos photos et vos prix. Les QR codes vont sur vos tables, la commande WhatsApp est activée.</p>
+            <span class="tag">Je fais tout</span>
+          </div>
+          <div class="station">
+            <h3>Vous testez</h3>
+            <p>Vos 10 premières commandes (ou 3 semaines) sont offertes. Ensuite je vous montre les chiffres : combien de commandes, combien de francs.</p>
+            <span class="tag">10 commandes offertes</span>
+          </div>
+          <div class="station">
+            <h3>Vous décidez</h3>
+            <p>Le Pack Partenaire se paie seulement quand votre site est en ligne. Le menu reste à vous, quoi qu’il arrive.</p>
+            <span class="tag">0 F d’avance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Démos : plateau cobalt -->
+    <section id="demos" class="tray t-cobalt" aria-labelledby="demos-title">
+      <div class="wrap">
+        <div class="demos-head">
+          <h2 id="demos-title" class="h2">Trois restos de démo.<br>Tout fonctionne.</h2>
+          <p class="lede">Des restaurants fictifs, mais de vrais sites : menu, commande WhatsApp, réservation, horaires en direct. Essayez même l’espace restaurateur.</p>
+        </div>
+        <div class="demos">
+          {demos.map((d) => (
+            <article class="demo">
+              <figure class="shot"><img src={d.img} alt={d.alt} width="800" height="500" loading="lazy" style={`object-position:${d.pos}`}></figure>
+              <div>
+                <h3>{d.nom}</h3>
+                <p class="kind">{d.kind}</p>
+                <p>{d.txt}</p>
+                <div class="acts">
+                  <a class="btn btn-white" href={d.url} target="_blank" rel="noopener">Voir le site</a>
+                  <a class="link" href={wa(`Bonjour Nour, j'aime le site ${d.nom}. Je voudrais un site comme ça pour mon restaurant.`)} target="_blank" rel="noopener">Je veux ce site</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pack Partenaire : plateau or -->
+    <section id="pack" class="tray t-gold pack" aria-labelledby="pack-title">
+      <div class="pack-main">
+        <h2 id="pack-title" class="h2">Pack Restaurant Partenaire</h2>
+        <p class="lede">Pas juste un site : tout pour que vos clients commandent vraiment. Pour les <strong>5 premiers restaurants</strong>, sans rien payer d’avance.</p>
+        <p class="pack-test"><strong>D’abord, on teste chez vous, gratuitement.</strong> Je prépare votre menu avec vos plats et je pose les QR sur vos tables. Après 10 commandes (ou 3 semaines), je vous montre les chiffres. Vous décidez ensuite. Le menu reste à vous, quoi qu’il arrive.</p>
+        <ul class="pack-list">
+          <li><div><b>Votre site de commande WhatsApp</b><small>Menu avec photos et prix, commande en 1 clic, bouton itinéraire, « Ouvert / Fermé » en direct, chevalets QR imprimés à votre nom, espace restaurateur</small></div><span class="v">75 000 F</span></li>
+          {bonus.map((b) => (
+            <li><div><b><span class="bonus">Bonus</span>{b.t}</b><small>{b.d}</small></div><span class="v">valeur {b.v}</span></li>
+          ))}
+          <li><div><b>3 mois de suivi inclus</b><small>Rapport mensuel de vos commandes + aide pour vos modifications (jusqu’à 10 demandes)</small></div><span class="v">inclus</span></li>
+        </ul>
+      </div>
+      <aside class="pack-side" aria-label="Prix du Pack Partenaire">
+        <div class="pack-sticky">
+        <div class="seats" role="img" aria-label="5 places restantes sur 5">{[1,2,3,4,5].map((n) => <span>{n}</span>)}</div>
+        <p><strong>5 places restantes</strong> · ensuite 125 000 F avec 50 % d’avance</p>
+        <div class="line"><span>Valeur totale</span><s>170 000 F</s></div>
+        <div class="line"><span>Prix normal</span><s>125 000 F</s></div>
+        <p class="price">90 000 <small>F</small></p>
+        <p class="pay">0 F d’avance : vous payez en une fois, quand votre site est en ligne et validé par vous.</p>
+        <a class="btn btn-wa" href={WA_PACK} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+        <p class="roi">Exemple : 2 commandes de plus par jour × 2 500 F × 30 jours = 150 000 F.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Formules : plateau blanc -->
+    <section id="formules" class="tray t-white" aria-labelledby="plans-title">
+      <div class="wrap">
+        <h2 id="plans-title" class="h2">Vous voulez seulement le site ?</h2>
+        <p class="lede lede-gap">Trois formules, des prix et des délais annoncés dès le départ. Je vous montre la maquette avant de coder, et je la refais gratuitement si elle ne vous plaît pas.</p>
+        <div class="plans">
+          {plans.map((p) => (
+            <div class="plan">
+              <h3>{p.nom}</h3>
+              <p class="amount">{p.prix} <small>FCFA</small></p>
+              <p class="delay">En ligne en {p.delai}{p.flag && <span class="flag">{p.flag}</span>}</p>
+              <ul>{p.top.map((f) => <li>{f}</li>)}</ul>
+              <details><summary>Tout ce qui est inclus</summary><ul>{p.more.map((f) => <li>{f}</li>)}</ul></details>
+              <a class="btn btn-ink" href={wa(`Bonjour Nour, je suis intéressé par la formule ${p.nom}. Pouvez-vous m'en dire plus ?`)} target="_blank" rel="noopener">Je veux cette formule</a>
+            </div>
+          ))}
+        </div>
+        <div class="terms">
+          <p><b>50 % / 50 %</b>La moitié à la commande, le solde à la livraison.</p>
+          <p><b>Orange Money, Moov Money</b>ou en espèces.</p>
+          <p><b>Hébergement 1 an inclus</b>Ensuite 45 000 F par an, nom de domaine compris.</p>
+          <p><b>Le site vous appartient</b>Tous les accès vous sont transférés au solde.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos : la photo dans l’assiette -->
+    <section id="apropos" class="tray t-table" aria-labelledby="about-title">
+      <div class="wrap about">
+        <div class="plate"><img src="/img/founder.webp" alt="Nour-Al-Dine OUEDRAOGO, fondateur de Nour Digital" width="600" height="600" loading="lazy"></div>
+        <div>
+          <h2 id="about-title" class="h2">Pas une agence. Quelqu’un de Ouaga.</h2>
+          <p class="lede lede-gap">Je m’appelle <strong>Nour-Al-Dine OUEDRAOGO</strong>. Je vois chaque jour d’excellents restaurants perdre des clients face à des concurrents moins bons, juste parce que ces concurrents ont un site.</p>
+          <p class="lede">Vous avez un seul interlocuteur : moi. Je comprends votre restaurant, je crée votre site, et c’est moi qui réponds quand vous avez une question.</p>
+          <ul class="promises">
+            <li><b>Honnêteté avant tout</b>Je vous dis ce que je peux faire et ce que je ne peux pas.</li>
+            <li><b>Les délais, c’est sacré</b>En cas d’imprévu, je vous préviens à l’avance, toujours.</li>
+            <li><b>Le travail bien fait ou recommencé</b>Je reviens sur mon travail autant de fois qu’il le faut.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq t-white" aria-labelledby="faq-title">
+      <div class="wrap">
+        <h2 id="faq-title" class="h2">« Oui, mais… »</h2>
+        <p class="lede lede-gap">Ce sont les vraies questions qu’on me pose. Je préfère y répondre franchement ici.</p>
+        <div class="faq-list">
+          {faqs.map(([q, a]) => (
+            <details><summary>{q}</summary><p>{a}</p></details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Fin : on referme sur le plateau rouge -->
+    <section class="tray t-red final" aria-labelledby="final-title">
+      
+      <div class="wrap">
+        <h2 id="final-title" class="h2">Voyez votre site avant de dire oui.</h2>
+        <p class="lede">Test gratuit chez vous : vos 10 premières commandes WhatsApp sont offertes. Un seul message suffit.</p>
+        <ol>
+          <li>Vous m’écrivez « DÉMO »</li>
+          <li>Je réponds sous 2 heures</li>
+          <li>On parle de votre resto</li>
+          <li>Vous recevez un premier avis gratuit</li>
+        </ol>
+        <div class="hero-actions">
+          <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+        </div>
+        <p class="ps"><strong>P.S.</strong> Pendant que vous lisez ceci, quelqu’un à Ouaga cherche « restaurant près de moi » et tombe sur votre concurrent. Après les 5 premiers restaurants, le Pack Partenaire passe à 125 000 F.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Nour Digital · Sites web pour restaurants · Ouagadougou, Burkina Faso</span>
+    <a href={WA_DEMO} target="_blank" rel="noopener">WhatsApp : +226 44 60 87 89</a>
+  </footer>
+
+  <a class="wa-float" href={WA_DEMO} target="_blank" rel="noopener" aria-label="Écrire à Nour Digital sur WhatsApp"><Fragment set:html={waIcon} /></a>
+
+
+  <script define:vars={{ DISHES: dishes }}>
+    const fmt = (n) => n.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' F';
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $ = (s) => document.querySelector(s);
+    const N = DISHES.length, STEP = 360 / N;
+    const susan = $('#susan'), view = $('#susan-view'), stage = $('#susan-stage');
+    const nameEl = $('#susan-name'), priceEl = $('#susan-price'), hint = $('#susan-hint');
+    const body = $('#bubble-body'), bubble = $('#bubble'), typing = $('#typing'), toast = $('#toast');
+    const plates = Array.from(document.querySelectorAll('.dish'));
+    const qtys = new Array(N).fill(0);
+
+    // Animations retenues
+    const opt = () => ({ idle: 'step', fly: true, typing: true, toast: true, cut: true });
+
+    // ─── Le plateau ───
+    let rot = 0;           // rotation en degrés (le plat i est devant quand rot = -i*STEP)
+    let active = 0;
+    let touched = false;   // dès que le visiteur touche, le plateau arrête d'avancer seul
+    const mod = (n) => ((n % N) + N) % N;
+    function paint(animate = true) {
+      susan.classList.toggle('glide', animate);
+      susan.style.setProperty('--rot', rot + 'deg');
+      const i = mod(Math.round(-rot / STEP));
+      if (i !== active || !animate) {
+        active = i;
+        nameEl.textContent = DISHES[i].nom;
+        priceEl.textContent = fmt(DISHES[i].prix);
+        plates.forEach((p, k) => p.classList.toggle('front', k === i));
+      }
+    }
+    function goTo(i) {
+      const target = -i * STEP;
+      // prendre le chemin le plus court
+      let delta = ((target - rot) % 360 + 540) % 360 - 180;
+      rot += delta; paint(true);
+    }
+    const go = (d) => goTo(mod(active + d));
+    function interact() { if (!touched) { touched = true; hint.classList.add('done'); } }
+    $('#susan-prev').addEventListener('click', () => { interact(); go(-1); });
+    $('#susan-next').addEventListener('click', () => { interact(); go(1); });
+    plates.forEach((p, k) => p.addEventListener('click', () => { interact(); if (k === active) add(); else goTo(k); }));
+
+    // glisser du doigt / de la souris
+    let drag = null;
+    view.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, r: rot, moved: false }; view.setPointerCapture(e.pointerId); });
+    view.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 6) drag.moved = true;
+      if (drag.moved) { interact(); rot = drag.r + dx * (300 / view.clientWidth); paint(false); }
+    });
+    const end = () => { if (!drag) return; const moved = drag.moved; drag = null; if (moved) { rot = Math.round(rot / STEP) * STEP; paint(true); } };
+    view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end);
+
+    // ─── Mouvement quand personne ne touche ───
+    let lastStep = performance.now(), last = performance.now();
+    function tick(now) {
+      const dt = now - last; last = now;
+      const o = opt();
+      if (!touched && !reduce && !document.hidden && inView) {
+        if (o.idle === 'spin') { rot -= dt * 0.006; paint(false); }
+        else if (o.idle === 'step' && now - lastStep > 3200) { lastStep = now; go(1); }
+      }
+      requestAnimationFrame(tick);
+    }
+    let inView = true;
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; }).observe(view);
+
+    // ─── La commande ───
+    function render(highlight = -1) {
+      const items = DISHES.map((d, i) => ({ d, i, q: qtys[i] })).filter((x) => x.q > 0);
+      if (!items.length) { body.innerHTML = '<p class="empty">Ajoutez un plat pour composer la commande.</p>'; return; }
+      let total = 0;
+      const lines = items.map(({ d, i, q }) => { total += d.prix * q; return `<li${i === highlight ? ' class="new"' : ''}><span>${q} × ${d.nom}</span><span>${fmt(d.prix * q)}</span></li>`; }).join('');
+      body.innerHTML = `<span>Bonjour ! Je voudrais :</span><ul>${lines}</ul><div class="total"><span>Total</span><span>${fmt(total)}</span></div><span>À emporter vers 13 h, merci !</span>`;
+    }
+    function fly(i) {
+      if (!opt().fly || reduce) return Promise.resolve();
+      const from = plates[i].querySelector('img').getBoundingClientRect();
+      const to = bubble.getBoundingClientRect();
+      const g = document.createElement('img');
+      g.src = plates[i].querySelector('img').currentSrc; g.className = 'ghost'; g.alt = '';
+      const size = Math.min(from.width, 160);
+      Object.assign(g.style, { left: from.left + from.width / 2 - size / 2 + 'px', top: from.top + from.height / 2 - size / 2 + 'px', width: size + 'px', height: size + 'px' });
+      document.body.appendChild(g);
+      const dx = to.left + 50 - (from.left + from.width / 2), dy = to.top + 60 - (from.top + from.height / 2);
+      return g.animate([
+        { transform: 'translate(0,0) scale(1)' },
+        { transform: `translate(${dx * .5}px, ${dy * .5 - 90}px) scale(.7)`, offset: .5 },
+        { transform: `translate(${dx}px, ${dy}px) scale(.2)`, opacity: .3 },
+      ], { duration: 650, easing: 'cubic-bezier(.3,.7,.2,1)' }).finished.then(() => g.remove());
+    }
+    function notify() {
+      if (!opt().toast || reduce) return;
+      toast.classList.remove('on'); void toast.offsetWidth; toast.classList.add('on');
+      bubble.classList.remove('buzz'); void bubble.offsetWidth; bubble.classList.add('buzz');
+    }
+    let busy = false;
+    async function add() {
+      interact();
+      if (busy) return; busy = true;
+      const i = active;
+      qtys[i] = Math.min(qtys[i] + 1, 9);
+      plates[i].classList.remove('pop'); void plates[i].offsetWidth; plates[i].classList.add('pop');
+      await fly(i);
+      if (opt().typing && !reduce) { typing.classList.add('on'); await new Promise((r) => setTimeout(r, 500)); typing.classList.remove('on'); }
+      render(i); notify(); busy = false;
+    }
+    $('#susan-add').addEventListener('click', add);
+    $('#order-reset').addEventListener('click', () => { qtys.fill(0); render(); });
+
+    // départ
+    qtys[0] = 2; qtys[4] = 1; render(); paint(false);
+    requestAnimationFrame(tick);
+
+    // ─── Titre qui tombe mot par mot ───
+    function playCut() {
+      const h = $('#hero-title');
+      h.classList.remove('cut-play');
+      if (!opt().cut || reduce) return;
+      void h.offsetWidth; h.classList.add('cut-play');
+    }
+    playCut();
+
+    // ─── Repère du parcours ───
+    const rail = $('#rail'), fill = $('#rail-fill'), here = $('#here');
+    const stations = Array.from(rail.querySelectorAll('.station'));
+    const mobile = matchMedia('(max-width: 760px)');
+    function onScroll() {
+      const r = rail.getBoundingClientRect();
+      const vh = innerHeight;
+      const p = Math.max(0, Math.min(1, (vh * 0.75 - r.top) / (r.height + vh * 0.25)));
+      const n = stations.length;
+      if (mobile.matches) { fill.style.height = `${p * 100}%`; fill.style.width = ''; }
+      else {
+        const x0 = stations[0].offsetLeft + 24, x1 = stations[n - 1].offsetLeft + 24;
+        const x = x0 + p * (x1 - x0);
+        fill.style.width = `${x}px`; fill.style.height = '';
+        here.style.left = `${x}px`; here.style.opacity = p > 0.02 ? '1' : '0';
+      }
+      stations.forEach((s, i) => s.classList.toggle('on', p >= i / (n - 1) - 0.001));
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+  </script>
 </Layout>

@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T03:59:52.142Z",
+  "title": "Design System: Nour Digital",
+  "extensions": {
+    "colorMeta": {
+      "red-stage": {
+        "role": "primary",
+        "displayName": "Maquis Tomato Red",
+        "canonical": "oklch(53.6% 0.202 25.8)",
+        "tonalRamp": [
+          "#220000",
+          "#4E0003",
+          "#80020E",
+          "#B4151F",
+          "#DD4542",
+          "#FB766D",
+          "#FFB3AB",
+          "#FFE9E6"
+        ]
+      },
+      "red-bright": {
+        "role": "primary",
+        "displayName": "Bright Tomato",
+        "canonical": "oklch(55.8% 0.210 25.6)",
+        "tonalRamp": [
+          "#210000",
+          "#4D0005",
+          "#7E0912",
+          "#B7081C",
+          "#E0403F",
+          "#FE746C",
+          "#FDB4AC",
+          "#FEE9E6"
+        ]
+      },
+      "red-deep": {
+        "role": "primary",
+        "displayName": "Deep Tomato",
+        "canonical": "oklch(48.6% 0.185 25.8)",
+        "tonalRamp": [
+          "#220000",
+          "#4E0004",
+          "#7F0510",
+          "#AE2527",
+          "#D64D48",
+          "#F57C73",
+          "#FEB3AB",
+          "#FFE9E6"
+        ]
+      },
+      "cobalt": {
+        "role": "secondary",
+        "displayName": "Enamel Cobalt",
+        "canonical": "oklch(42.2% 0.181 265.8)",
+        "tonalRamp": [
+          "#010035",
+          "#081B60",
+          "#1C388F",
+          "#3357C0",
+          "#517BE7",
+          "#7CA2FB",
+          "#B0C9FF",
+          "#E7EFFE"
+        ]
+      },
+      "cobalt-ink": {
+        "role": "secondary",
+        "displayName": "Cobalt Mist",
+        "canonical": "oklch(92.1% 0.038 272.5)",
+        "tonalRamp": [
+          "#080B14",
+          "#212432",
+          "#3C4153",
+          "#5A6076",
+          "#7B8198",
+          "#9EA4B9",
+          "#C3C8DB",
+          "#E9EEFD"
+        ]
+      },
+      "marigold": {
+        "role": "tertiary",
+        "displayName": "Marigold",
+        "canonical": "oklch(80.8% 0.166 82.7)",
+        "tonalRamp": [
+          "#140800",
+          "#322200",
+          "#553D04",
+          "#7D5B02",
+          "#A77A00",
+          "#CE9C2B",
+          "#EEC26E",
+          "#FFECCA"
+        ]
+      },
+      "yolk": {
+        "role": "tertiary",
+        "displayName": "Yolk",
+        "canonical": "oklch(87.9% 0.162 90.9)",
+        "tonalRamp": [
+          "#120A00",
+          "#302300",
+          "#524000",
+          "#765E07",
+          "#9E7E09",
+          "#C4A130",
+          "#E4C770",
+          "#FEEEBF"
+        ]
+      },
+      "wa-green": {
+        "role": "functional",
+        "displayName": "WhatsApp Action Green",
+        "canonical": "oklch(51.0% 0.126 153.3)",
+        "tonalRamp": [
+          "#001103",
+          "#002E14",
+          "#035029",
+          "#157440",
+          "#409660",
+          "#70B887",
+          "#9DDAAF",
+          "#CBFDD9"
+        ]
+      },
+      "wa-green-deep": {
+        "role": "functional",
+        "displayName": "WhatsApp Green, pressed",
+        "canonical": "oklch(45.5% 0.112 153.1)",
+        "tonalRamp": [
+          "#001102",
+          "#002F13",
+          "#0B4F29",
+          "#267243",
+          "#4B9464",
+          "#77B68A",
+          "#A3D8B2",
+          "#CFFCDB"
+        ]
+      },
+      "bubble": {
+        "role": "functional",
+        "displayName": "WhatsApp Bubble",
+        "canonical": "oklch(94.6% 0.072 131.5)",
+        "tonalRamp": [
+          "#050E00",
+          "#1C2A0F",
+          "#374827",
+          "#536940",
+          "#748B61",
+          "#98AD87",
+          "#BED0AF",
+          "#E5F5D9"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "steel": {
+        "role": "neutral",
+        "displayName": "Steel",
+        "canonical": "oklch(29.8% 0.005 174.1)",
+        "tonalRamp": [
+          "#0A0B0B",
+          "#242625",
+          "#404342",
+          "#5F6261",
+          "#808382",
+          "#A3A6A5",
+          "#C7CAC9",
+          "#EDEFEE"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Slate",
+        "canonical": "oklch(42.2% 0.008 159.8)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#232624",
+          "#3F4341",
+          "#5E6360",
+          "#7F8481",
+          "#A2A6A3",
+          "#C6CAC8",
+          "#ECEFED"
+        ]
+      },
+      "ink-panel-text": {
+        "role": "neutral",
+        "displayName": "Panel Grey",
+        "canonical": "oklch(84.2% 0.005 145.5)",
+        "tonalRamp": [
+          "#0A0B0A",
+          "#242524",
+          "#414341",
+          "#5F625F",
+          "#808380",
+          "#A3A6A3",
+          "#C8CAC8",
+          "#EDEFED"
+        ]
+      },
+      "zinc-table": {
+        "role": "neutral",
+        "displayName": "Zinc Table",
+        "canonical": "oklch(89.6% 0.008 151.9)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#232624",
+          "#404340",
+          "#5E625F",
+          "#7F8480",
+          "#A2A6A3",
+          "#C7CAC7",
+          "#ECEFED"
+        ]
+      },
+      "enamel": {
+        "role": "neutral",
+        "displayName": "Enamel White",
+        "canonical": "oklch(96.5% 0.004 134.8)",
+        "tonalRamp": [
+          "#0B0B0A",
+          "#242524",
+          "#414240",
+          "#60625F",
+          "#818380",
+          "#A4A5A3",
+          "#C8C9C7",
+          "#EEEFED"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "#FFFFFF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; second line in yolk; drops word by word once on load. Phone: clamp(40px, 11.5vw, 56px)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One per band."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Loss total and Pack price; units at 0.4em."
+      },
+      "amount": {
+        "displayName": "Amount",
+        "purpose": "Plan prices; FCFA at 0.38em."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Demo, plan and station names."
+      },
+      "dish-name": {
+        "displayName": "Dish name",
+        "purpose": "Front plate name in the pick row, always one line (19px on phone)."
+      },
+      "question": {
+        "displayName": "Question",
+        "purpose": "FAQ summaries and promise titles."
+      },
+      "price-tag": {
+        "displayName": "Price tag",
+        "purpose": "Dish prices in yolk."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph under each headline, max 60ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, tabular numerals; 16px on phone."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons and links, sentence case; 16px on compact buttons."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Notes, terms, bubble meta, toast (13 to 15px)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "button-rest",
+        "value": "0 8px 16px -10px rgba(20,20,20,.6)",
+        "purpose": "Every pill button."
+      },
+      {
+        "name": "float",
+        "value": "0 12px 20px -10px rgba(0,0,0,.6)",
+        "purpose": "Fixed WhatsApp button."
+      },
+      {
+        "name": "message-lift",
+        "value": "0 24px 40px -18px rgba(0,0,0,.55)",
+        "purpose": "WhatsApp bubble over the hero."
+      },
+      {
+        "name": "plate-rest",
+        "value": "0 16px 16px -6px rgba(10,3,0,.55)",
+        "purpose": "Plates resting on the lazy susan."
+      },
+      {
+        "name": "plate-served",
+        "value": "0 34px 26px -10px rgba(10,3,0,.6)",
+        "purpose": "Front plate, raised 30px."
+      },
+      {
+        "name": "founder-plate",
+        "value": "inset 0 0 0 6px #fff, 0 26px 30px -20px rgba(0,0,0,.5)",
+        "purpose": "Drawn enamel plate holding the founder photo."
+      },
+      {
+        "name": "table-shadow",
+        "value": "radial-gradient(closest-side, rgba(30,0,0,.6), rgba(30,0,0,0))",
+        "purpose": "Ellipse cast by the lazy susan on the red band (a background, not a box-shadow)."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 4px solid #F4B400; outline-offset: 3px; box-shadow: 0 0 0 7px #141414",
+        "purpose": "Keyboard focus on every control."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-house",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The single easing for every transition and keyframe."
+      },
+      {
+        "name": "press",
+        "value": ".18s ease-house; hover translateY(-2px); active scale(.97)",
+        "purpose": "Buttons."
+      },
+      {
+        "name": "susan-glide",
+        "value": "transform .9s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Lazy susan settling on a plate by the shortest path."
+      },
+      {
+        "name": "susan-idle-step",
+        "value": "3200ms",
+        "purpose": "Advance one plate while untouched, in view and tab visible; the first touch stops it for good."
+      },
+      {
+        "name": "plate-pop",
+        "value": ".55s ease-house, translateZ 60px then back to 30px",
+        "purpose": "Plate lifts when added."
+      },
+      {
+        "name": "plate-fly",
+        "value": "650ms cubic-bezier(.3,.7,.2,1), arc to the bubble, scale 1 to .2",
+        "purpose": "Ajouter: the plate image travels to the WhatsApp bubble."
+      },
+      {
+        "name": "typing",
+        "value": "500ms; three dots on a 1s loop staggered .15s",
+        "purpose": "Shown before the new order line appears."
+      },
+      {
+        "name": "toast",
+        "value": "2.2s ease-house",
+        "purpose": "'Nouvelle commande reçue' notification."
+      },
+      {
+        "name": "buzz",
+        "value": ".45s ease-in-out, rotate up to 1.2deg",
+        "purpose": "Bubble shake on a new line."
+      },
+      {
+        "name": "title-drop",
+        "value": ".55s steps(4, end), words staggered .15s",
+        "purpose": "Hero headline, once on load."
+      },
+      {
+        "name": "faq-plus",
+        "value": ".25s ease-house, rotate 45deg and marigold fill",
+        "purpose": "Accordion open state."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none; animation: none; scroll-behavior: auto",
+        "purpose": "Under prefers-reduced-motion everything stops: no idle step, fly, typing, toast or title drop."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "380px"
+      },
+      {
+        "name": "phone",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "1080px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "WhatsApp Button",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "The one primary action: opens WhatsApp with the pre-filled DÉMO message. Green is reserved for this.",
+      "html": "<a class=\"ds-btn-wa\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89C23.94 5.34 18.6 0 12.05 0Zm5.42 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49 1.71.74 2.38.8 3.24.67.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.18.16-1.29-.07-.11-.26-.18-.56-.33Z\"/></svg>Écrire « DÉMO » sur WhatsApp</a>",
+      "css": ".ds-btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 28px;border-radius:999px;border:5px solid var(--rim,#141414);font-family:'General Sans',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.2;text-decoration:none;cursor:pointer;box-shadow:0 8px 16px -10px rgba(20,20,20,.6);transition:transform .18s cubic-bezier(.16,1,.3,1),background-color .18s cubic-bezier(.16,1,.3,1);background:var(--green,#0F7A42);color:#fff;} .ds-btn-wa svg{width:24px;height:24px;flex:none;} .ds-btn-wa:hover{background:var(--green-hi,#0C6837);transform:translateY(-2px);} .ds-btn-wa:active{transform:scale(.97);} .ds-btn-wa:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Secondary pill: nav DÉMO and plan buttons.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Je veux cette formule</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 28px;border-radius:999px;border:5px solid var(--rim,#141414);font-family:'General Sans',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.2;text-decoration:none;cursor:pointer;box-shadow:0 8px 16px -10px rgba(20,20,20,.6);transition:transform .18s cubic-bezier(.16,1,.3,1),background-color .18s cubic-bezier(.16,1,.3,1);min-height:50px;padding:10px 22px;font-size:16px;border-width:4px;background:var(--rim,#141414);color:#fff;} .ds-btn-ink:hover{transform:translateY(-2px);} .ds-btn-ink:active{transform:scale(.97);} .ds-btn-ink:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);}"
+    },
+    {
+      "name": "White Button",
+      "kind": "button",
+      "refersTo": "button-white",
+      "description": "Pill on cobalt: opens a live demo site.",
+      "html": "<div class=\"ds-on-cobalt\"><a class=\"ds-btn-white\" href=\"#\">Voir le site</a></div>",
+      "css": ".ds-on-cobalt{background:#1E3FAE;padding:24px;} .ds-btn-white{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 28px;border-radius:999px;border:5px solid var(--rim,#141414);font-family:'General Sans',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.2;text-decoration:none;cursor:pointer;box-shadow:0 8px 16px -10px rgba(20,20,20,.6);transition:transform .18s cubic-bezier(.16,1,.3,1),background-color .18s cubic-bezier(.16,1,.3,1);min-height:48px;padding:8px 20px;font-size:16px;border-width:4px;background:#fff;color:var(--rim,#141414);} .ds-btn-white:hover{transform:translateY(-2px);} .ds-btn-white:active{transform:scale(.97);} .ds-btn-white:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);}"
+    },
+    {
+      "name": "Pick Row",
+      "kind": "custom",
+      "refersTo": "button-add",
+      "description": "Under the lazy susan: arrows, fixed-height one-line dish label with yolk price, green Ajouter.",
+      "html": "<div class=\"ds-pick\"><button class=\"ds-arrow\" aria-label=\"Plat précédent\"><svg viewBox=\"0 0 24 24\"><path d=\"M15 5l-7 7 7 7\"/></svg></button><div class=\"ds-label\"><span class=\"ds-name\">Poulet braisé</span><span class=\"ds-price\">2 500 F</span></div><button class=\"ds-add\">Ajouter</button><button class=\"ds-arrow\" aria-label=\"Plat suivant\"><svg viewBox=\"0 0 24 24\"><path d=\"M9 5l7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-pick{display:flex;align-items:center;justify-content:center;gap:12px;padding:20px;background:#C81E26;color:#fff;} .ds-arrow{flex:none;width:48px;height:48px;border-radius:50%;border:4px solid var(--rim,#141414);background:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .15s cubic-bezier(.16,1,.3,1);} .ds-arrow:active{transform:scale(.94);} .ds-arrow:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);} .ds-arrow svg{width:22px;height:22px;fill:none;stroke:#141414;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;} .ds-label{flex:0 0 220px;height:52px;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1.15;min-width:0;} .ds-name{font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:900;font-size:24px;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} .ds-price{font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:800;font-size:18px;color:var(--yolk,#FFD23F);margin-top:2px;} .ds-add{flex:none;min-height:48px;padding:8px 20px;border-radius:999px;border:4px solid var(--rim,#141414);background:var(--green,#0F7A42);color:#fff;font-family:'General Sans',system-ui,sans-serif;font-weight:600;font-size:16px;cursor:pointer;transition:transform .15s cubic-bezier(.16,1,.3,1),background-color .15s;} .ds-add:hover{background:var(--green-hi,#0C6837);} .ds-add:active{transform:scale(.96);} .ds-add:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);}"
+    },
+    {
+      "name": "WhatsApp Bubble",
+      "kind": "card",
+      "refersTo": "whatsapp-bubble",
+      "description": "The order exactly as the owner receives it on WhatsApp.",
+      "html": "<div class=\"ds-bubble\"><span class=\"ds-who\">Ce que le resto reçoit sur WhatsApp</span><span>Bonjour ! Je voudrais :</span><ul><li><span>2 × Poulet braisé</span><span>5 000 F</span></li><li><span>1 × Plantain braisé</span><span>500 F</span></li></ul><div class=\"ds-total\"><span>Total</span><span>5 500 F</span></div><span class=\"ds-meta\">12:30 · lu</span></div>",
+      "css": ".ds-bubble{position:relative;max-width:300px;margin-left:12px;background:var(--bubble,#DCF8C6);color:#111B21;border-radius:22px 22px 22px 6px;padding:16px 18px 12px;font-family:'General Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;font-variant-numeric:tabular-nums;box-shadow:0 24px 40px -18px rgba(0,0,0,.55);} .ds-bubble::before{content:\"\";position:absolute;left:-10px;bottom:0;width:20px;height:18px;background:var(--bubble,#DCF8C6);clip-path:polygon(100% 0,100% 100%,0 100%);} .ds-who{display:block;font-weight:600;color:#075E54;font-size:15px;margin-bottom:6px;} .ds-bubble ul{list-style:none;margin:6px 0 10px;padding:0;} .ds-bubble li{display:flex;justify-content:space-between;gap:14px;} .ds-total{border-top:2px dashed rgba(17,27,33,.25);padding-top:8px;font-weight:600;display:flex;justify-content:space-between;} .ds-meta{display:block;text-align:right;font-size:13px;color:#4F6B5E;margin-top:6px;}"
+    },
+    {
+      "name": "FAQ Accordion",
+      "kind": "custom",
+      "description": "Objection rows under ink lines with a drawn plus that turns into a marigold cross.",
+      "html": "<div class=\"ds-faq\"><details open><summary>« C’est trop cher. »</summary><p>Faites le calcul : 2 commandes de plus par jour à 2 500 F, c’est 150 000 F par mois.</p></details><details><summary>« Je n’ai pas le temps. »</summary><p>Il vous faut environ 7 minutes au total.</p></details></div>",
+      "css": ".ds-faq{border-top:10px solid #141414;background:#F2F4F1;color:#141414;font-family:'General Sans',system-ui,sans-serif;font-weight:500;font-size:17px;line-height:1.55;} .ds-faq details{border-bottom:3px solid #141414;} .ds-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:800;font-size:22px;line-height:1.2;} .ds-faq summary::-webkit-details-marker{display:none;} .ds-faq summary:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);} .ds-faq summary::after{content:\"\";flex:none;width:40px;height:40px;border-radius:50%;border:4px solid #141414;background:linear-gradient(#141414,#141414) center/14px 3px no-repeat,linear-gradient(#141414,#141414) center/3px 14px no-repeat,transparent;transition:transform .25s cubic-bezier(.16,1,.3,1),background-color .25s cubic-bezier(.16,1,.3,1);} .ds-faq details[open] summary::after{transform:rotate(45deg);background-color:#F4B400;} .ds-faq p{margin:0;padding:0 0 22px;max-width:68ch;}"
+    },
+    {
+      "name": "Rail Station",
+      "kind": "custom",
+      "refersTo": "station-tag",
+      "description": "One step of the path: enamel disc with a 10 px ink rim on the 10 px rail, marigold once passed, white pill tag.",
+      "html": "<div class=\"ds-rail\"><div class=\"ds-station ds-on\"><h3>Vous écrivez « DÉMO »</h3><p>Sur WhatsApp, en 10 secondes.</p><span class=\"ds-tag\">Gratuit</span></div><div class=\"ds-station\"><h3>Je pose votre menu</h3><p>Avec vos plats, vos photos et vos prix.</p><span class=\"ds-tag\">Je fais tout</span></div></div>",
+      "css": ".ds-rail{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;padding:24px;background:#D9DEDA;color:#141414;font-family:'General Sans',system-ui,sans-serif;font-weight:500;} .ds-rail::before{content:\"\";position:absolute;left:24px;right:24px;top:47px;height:10px;background:#141414;border-radius:10px;} .ds-station{position:relative;padding-top:74px;} .ds-station::before{content:\"\";position:absolute;top:4px;left:0;width:48px;height:48px;border-radius:50%;background:#F2F4F1;border:10px solid #141414;transition:background-color .3s cubic-bezier(.16,1,.3,1);} .ds-station.ds-on::before{background:#F4B400;} .ds-station h3{margin:0;font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:900;font-size:28px;line-height:1;letter-spacing:-0.03em;} .ds-station p{margin:12px 0 0;color:#2B2E2D;} .ds-tag{display:inline-block;margin-top:14px;font-weight:600;font-size:14px;padding:4px 12px;border:3px solid #141414;border-radius:999px;background:#fff;}"
+    },
+    {
+      "name": "Versus Row",
+      "kind": "custom",
+      "description": "Facebook page vs Nour Digital site: two columns split by 3 px ink, drawn cross and tick.",
+      "html": "<div class=\"ds-versus\"><div class=\"ds-row\"><span class=\"ds-bad\">« Le menu ? Demandez en inbox »</span><span class=\"ds-good\">Menu, photos et prix clairs</span></div><div class=\"ds-row\"><span class=\"ds-bad\">Lent et lourd en 3G</span><span class=\"ds-good\">Léger : s’affiche même en 3G</span></div></div>",
+      "css": ".ds-versus{border-top:10px solid #141414;background:#F2F4F1;color:#141414;font-family:'General Sans',system-ui,sans-serif;font-weight:500;font-size:17px;} .ds-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:3px solid #141414;} .ds-row>*{padding:18px 0;} .ds-row>:last-child{padding-left:28px;border-left:3px solid #141414;} .ds-bad{color:#4A4F4C;} .ds-good{font-weight:600;} .ds-bad::before,.ds-good::before{content:\"\";display:inline-block;width:1.1em;height:1.1em;margin-right:.5em;vertical-align:-0.18em;-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat;} .ds-bad::before{--ico:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6l12 12M18 6L6 18' stroke='black' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E\");background:#D3212A;} .ds-good::before{--ico:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");background:#141414;}"
+    },
+    {
+      "name": "Price Panel",
+      "kind": "card",
+      "refersTo": "price-panel",
+      "description": "Black side of the Pack band: struck values, marigold figure, seat tiles, pay line in yolk.",
+      "html": "<aside class=\"ds-panel\"><div class=\"ds-seats\"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><div class=\"ds-line\"><span>Prix normal</span><s>125 000 F</s></div><p class=\"ds-price\">90 000 <small>F</small></p><p class=\"ds-pay\">0 F d’avance : vous payez quand votre site est en ligne.</p></aside>",
+      "css": ".ds-panel{display:flex;flex-direction:column;gap:18px;max-width:380px;background:#141414;color:#fff;padding:40px;font-family:'General Sans',system-ui,sans-serif;font-weight:500;} .ds-seats{display:flex;gap:8px;} .ds-seats span{flex:1;height:46px;border-radius:12px;background:#F4B400;color:#141414;display:grid;place-items:center;font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:900;font-size:20px;} .ds-line{display:flex;justify-content:space-between;gap:12px;color:#C9CCC9;font-size:17px;} .ds-price{margin:0;font-family:'Cabinet Grotesk','General Sans',system-ui,sans-serif;font-weight:900;font-size:80px;line-height:1;color:#F4B400;letter-spacing:-0.04em;} .ds-price small{font-size:.4em;letter-spacing:0;} .ds-pay{margin:0;color:#FFD23F;font-weight:600;}"
+    },
+    {
+      "name": "Floating WhatsApp Button",
+      "kind": "button",
+      "refersTo": "wa-float",
+      "description": "Fixed bottom-right circle, always one tap from WhatsApp.",
+      "html": "<a class=\"ds-wa-float\" href=\"#\" aria-label=\"Écrire sur WhatsApp\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89C23.94 5.34 18.6 0 12.05 0Zm5.42 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49 1.71.74 2.38.8 3.24.67.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.18.16-1.29-.07-.11-.26-.18-.56-.33Z\"/></svg></a>",
+      "css": ".ds-wa-float{width:64px;height:64px;border-radius:50%;background:var(--green,#0F7A42);border:5px solid var(--rim,#141414);display:grid;place-items:center;color:#fff;box-shadow:0 12px 20px -10px rgba(0,0,0,.6);transition:transform .2s cubic-bezier(.16,1,.3,1);} .ds-wa-float:hover{transform:translateY(-3px);} .ds-wa-float:focus-visible{outline:4px solid var(--marigold,#F4B400);outline-offset:3px;box-shadow:0 0 0 7px var(--rim,#141414);} .ds-wa-float svg{width:30px;height:30px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Maquis From Above",
+    "overview": "The page is a maquis service seen from overhead. The story is carried by edge-to-edge colour bands laid one after another like tablecloths down a long table: a red stage opens and closes the page, enamel white and zinc bands carry the reading, a cobalt band holds the working demos, a marigold band holds the offer. Nothing sits in a box. Structure comes from thick black ink lines drawn across the full measure, the way a painted rim edges enamel crockery.\n\nReal material is the second voice. The hero is a real walnut-dark wooden lazy susan in 3D perspective carrying real photographed plates; turning it brings a plate to the front, and adding it composes the WhatsApp order in front of the visitor. Photographs stay photographs: soft natural shadows, no outlines, no flat cartoon fills. Everything drawn in code (buttons, markers, frames, dividers) speaks in the ink-and-enamel language; everything photographed speaks in its own light.\n\nThe page is dense in conviction, not in ornament: large heavy display type, short French sentences, one action everywhere (write \"DÉMO\" on WhatsApp). It is built for a mid-range Android phone in bright outdoor light on 3G first, and the craft itself is the portfolio for premium prospects. It rejects the cream-plus-serif restaurant landing, the card-grid SaaS page and flat cartoon illustration.",
+    "keyCharacteristics": [
+      "Full-width colour bands; no boxed sections, no cards with shadows.",
+      "Thick ink lines (3 px rows, 4 to 5 px controls, 10 px section rules) as the only dividers.",
+      "Cabinet Grotesk 900 display at very tight leading against General Sans 500 text.",
+      "Real photographs only, cut on their own rim, lit with soft shadows.",
+      "Green appears only where a tap leads to, or builds, a WhatsApp message.",
+      "One easing curve for everything; motion stops the moment the visitor touches, and disappears under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The WhatsApp Green Rule",
+        "body": "wa-green appears only on controls that open WhatsApp or build the WhatsApp order (DÉMO buttons, Ajouter, the floating button). Secondary WhatsApp links may be ink buttons or plain links, but no other control, badge, tick or highlight is ever green.",
+        "section": "colors"
+      },
+      {
+        "name": "The Yolk On Dark Rule",
+        "body": "Yolk is emphasis for red, cobalt and ink grounds. On enamel or zinc, emphasis is red-bright or weight, never yolk.",
+        "section": "colors"
+      },
+      {
+        "name": "The Band Order Rule",
+        "body": "Red opens and closes the page. Two neighbouring bands never share a colour, and every reading-heavy section sits on a light band (enamel or zinc); cobalt and marigold are kept for proof and offer.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heavy Sign Rule",
+        "body": "Headings are always Cabinet Grotesk 900 at line-height 0.9 to 1 with -0.03em tracking; never lighter, never looser. Weight 800 is reserved for prices, questions and badges.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Eyebrow Rule",
+        "body": "A band opens on its headline. No small label, kicker or category line sits above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Full Band Rule",
+        "body": "A section is a colour band from edge to edge. It never gets margins, a border, a radius or a drop shadow to become a card.",
+        "section": "layout"
+      },
+      {
+        "name": "The No Shift Rule",
+        "body": "Anything that changes while the visitor watches (the dish name, price, bubble lines) lives in a box of fixed height, so rotation and ordering never move the layout.",
+        "section": "layout"
+      },
+      {
+        "name": "The Real Shadow Rule",
+        "body": "Shadows are soft, warm-dark and offset downward only, as cast by a midday sun. No hard offset shadows, no coloured glows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do build every section as a full-width colour band, and separate content inside it with ink lines: 10px under a section's first rule, 3px between rows.",
+      "Do use real photographs only, each with its source and licence recorded in ASSETS-SOURCES.md; cut plates on their own rim with transparent corners and darken wood toward walnut.",
+      "Do give photographed objects soft downward shadows (see Elevation) and leave their edges alone.",
+      "Do keep every changing label on one line in a fixed-height box so nothing moves when the lazy susan turns.",
+      "Do use the single ease cubic-bezier(.16, 1, .3, 1) for transitions, .9s for the turntable glide, and stop idle motion on first touch, off screen and in hidden tabs.",
+      "Do turn everything off under prefers-reduced-motion: no transitions, no animations, no idle rotation, no flying plate, no typing dots, no toast, no title drop, no smooth scroll.",
+      "Do draw icons as inline SVG (chevrons, ticks, crosses, bell, WhatsApp mark) and markers in CSS (the FAQ plus, rail discs).",
+      "Do keep touch targets at 44px or more and text at 16px or more on phone."
+    ],
+    "donts": [
+      "Don't box sections: no margins, borders, radii or drop shadows that turn a band into a card.",
+      "Don't put thick outlines or flat cartoon fills on photographic objects (plates, wood); ink rims belong to drawn things only.",
+      "Don't use green for anything that is not a WhatsApp action or the Ajouter button.",
+      "Don't put a kicker, eyebrow or small category label above a headline.",
+      "Don't use emoji, Unicode symbols or icon fonts as icons.",
+      "Don't let a dish name wrap to two lines or change the height of the pick row.",
+      "Don't use AI-generated images anywhere, or illustrations standing in for food, wood or people.",
+      "Don't use hard offset shadows, coloured glows or glassmorphism.",
+      "Don't use yolk on enamel or zinc."
+    ]
+  }
+}
