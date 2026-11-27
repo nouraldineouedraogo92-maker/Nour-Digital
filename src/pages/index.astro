@@ -3,9 +3,9 @@ import Layout from '../layouts/Email.astro';
 import '../styles/email.css';
 
 const WA_NUM = '22644608789';
-const wa = (msg: string) => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
-const WA_DEMO = wa('DÉMO. Bonjour Nour, je voudrais une démo gratuite pour mon restaurant.');
-const WA_PACK = wa('DÉMO. Bonjour Nour, je suis intéressé par le Pack Restaurant Partenaire à 90 000 F. Je voudrais une démo gratuite pour mon restaurant.');
+const wa = (msg: string) => `https://api.whatsapp.com/send?phone=${WA_NUM}&text=${encodeURIComponent(msg)}`;
+const WA_MENU = wa('MENU. Bonjour Nour, je voudrais tester le menu QR gratuit pour mon restaurant.');
+const WA_PACK = wa('MENU. Bonjour Nour, je suis intéressé par le Pack Restaurant Partenaire à 90 000 F. Je voudrais d’abord tester le menu QR gratuit pour mon restaurant.');
 
 /* Plats de la carte de démo (resto fictif, photos Unsplash, voir ASSETS-SOURCES.md) */
 const dishes = [
@@ -39,8 +39,8 @@ const faqs = [
   ['« J’ai déjà une page Facebook. »', 'Gardez-la ! Elle vous apporte des likes. Le site, lui, vous apporte des commandes : menu clair, prix, et commande toute écrite sur WhatsApp. On met même le lien du site sur votre page.'],
   ['« C’est trop cher. »', 'Faites le calcul : 2 commandes de plus par jour à 2 500 F, c’est 150 000 F par mois. Le Pack Partenaire coûte 90 000 F, et vous ne payez rien avant que le site soit en ligne.'],
   ['« Mes clients ne vont pas aller sur un site. »', 'Ils n’ont rien à installer : ils scannent le QR code sur la table ou cliquent sur le lien de votre statut WhatsApp. C’est plus simple que de vous appeler.'],
-  ['« Je n’ai pas le temps. »', 'Il vous faut environ 7 minutes au total : écrire « DÉMO », puis valider. Je récupère votre menu et vos photos moi-même, et je fais tout le reste.'],
-  ['« Je dois en parler à mon associé. »', 'Bien sûr. Demandez la démo gratuite : vous lui montrerez votre vrai site, avec le nom de votre restaurant. Ça facilite la discussion.'],
+  ['« Je n’ai pas le temps. »', 'Il vous faut environ 7 minutes au total : écrire « MENU », puis valider. Je récupère votre menu et vos photos moi-même, et je fais tout le reste.'],
+  ['« Je dois en parler à mon associé. »', 'Bien sûr. Faites le test gratuit : vous lui montrerez votre vrai menu, avec vos plats, et les premières commandes. Ça facilite la discussion.'],
   ['Comment vous faire confiance ?', 'C’est la question la plus légitime. Écrivez-moi sur WhatsApp, posez-moi toutes vos questions, jugez par vous-même comment je réponds. Si ça ne vous convient pas, vous ne perdez rien : la discussion est gratuite et sans engagement.'],
   ['Pouvez-vous bloquer mon site après livraison ?', 'Non. Dès que le solde est réglé, je vous transfère tous les accès : hébergement, domaine, fichiers. Vous êtes le seul propriétaire. Je n’ai plus aucun accès à votre site sauf si vous me le demandez pour une modification.'],
   ['Mon site marchera-t-il avec la connexion au Burkina ?', 'Oui. Je conçois des sites légers et rapides, qui se chargent correctement même en 3G : images compressées, code optimisé.'],
@@ -63,13 +63,13 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <nav aria-label="Navigation principale">
       <ul>
         <li><a href="#parcours">Comment ça marche</a></li>
-        <li><a href="#demos">Démos</a></li>
+        <li><a href="#demos">Exemples</a></li>
         <li><a href="#pack">Pack Partenaire</a></li>
         <li><a href="#formules">Formules</a></li>
         <li><a href="#faq">Questions</a></li>
       </ul>
     </nav>
-    <a class="btn btn-ink" href={WA_DEMO} target="_blank" rel="noopener">Écrire « DÉMO »</a>
+    <a class="btn btn-ink" href={WA_MENU} target="_blank" rel="noopener">Écrire « MENU »</a>
   </header>
 
   <main>
@@ -78,12 +78,12 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <div class="hero2-grid">
         <div class="hero2-copy">
           <h1 id="hero-title" class="cut"><span class="w">Vos</span> <span class="w">clients</span> <span class="w">commandent.</span> <span class="y"><span class="w">Vous</span> <span class="w">servez.</span></span></h1>
-          <p class="lede">Site web et menu QR pour votre restaurant à Ouagadougou : vos plats, avec photos et prix, sur le téléphone de vos clients. La commande arrive <strong>toute écrite sur votre WhatsApp</strong>, sans vous appeler. Votre site en ligne en 5 jours.</p>
+          <p class="lede">Site web et menu QR pour votre restaurant à Ouagadougou : vos plats, avec photos et prix, sur le téléphone de vos clients. La commande arrive <strong>toute écrite sur votre WhatsApp</strong>, sans vous appeler. Votre site en ligne en 5 à 7 jours.</p>
           <div class="hero-actions hero-actions-desk">
-            <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
-            <a class="link" href="#demos">Voir les sites de démo</a>
+            <a class="btn btn-wa" href={WA_MENU} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « MENU » sur WhatsApp</a>
+            <a class="link" href="#demos">Voir des exemples de sites</a>
           </div>
-          <p class="hero-free hero-actions-desk"><strong>Testez gratuitement :</strong> vos 10 premières commandes sont offertes.</p>
+          <p class="hero-free hero-actions-desk"><strong>Test gratuit :</strong> votre menu QR posé chez vous, 0 F, jusqu’à 10 commandes ou 3 semaines. <a href="#test">Les conditions</a></p>
         </div>
 
         <div class="susan-stage" id="susan-stage">
@@ -117,13 +117,13 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <span class="typing" id="typing" aria-hidden="true"><i></i><i></i><i></i></span>
               <span class="meta">12:30 · lu</span>
             </div>
-            <div class="order-foot"><span>Exemple : carte de démo (resto fictif)</span><button type="button" id="order-reset">Vider</button></div>
+            <div class="order-foot"><span>Exemple : carte d’un resto fictif</span><button type="button" id="order-reset">Vider</button></div>
           </div>
         </div>
 
         <div class="hero-actions hero-actions-mob">
-          <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
-          <p class="hero-free"><strong>Testez gratuitement :</strong> vos 10 premières commandes sont offertes.</p>
+          <a class="btn btn-wa" href={WA_MENU} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « MENU » sur WhatsApp</a>
+          <p class="hero-free"><strong>Test gratuit :</strong> votre menu QR posé chez vous, 0 F, jusqu’à 10 commandes ou 3 semaines. <a href="#test">Les conditions</a></p>
         </div>
       </div>
     </section>
@@ -160,7 +160,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <span class="rail-fill" id="rail-fill" aria-hidden="true"></span>
           <span class="here" id="here" aria-hidden="true"></span>
           <div class="station">
-            <h3>Vous écrivez « DÉMO »</h3>
+            <h3>Vous écrivez « MENU »</h3>
             <p>Sur WhatsApp, en 10 secondes. Je vous réponds en moins de 2 heures.</p>
             <span class="tag">Gratuit</span>
           </div>
@@ -171,14 +171,28 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           </div>
           <div class="station">
             <h3>Vous testez</h3>
-            <p>Vos 10 premières commandes (ou 3 semaines) sont offertes. Ensuite je vous montre les chiffres : combien de commandes, combien de francs.</p>
-            <span class="tag">10 commandes offertes</span>
+            <p>0 F pendant 3 semaines ou jusqu’à 10 commandes, selon ce qui arrive en premier. Ensuite je vous montre les chiffres : combien de commandes, combien de francs.</p>
+            <span class="tag">0 F pendant le test</span>
           </div>
           <div class="station">
             <h3>Vous décidez</h3>
-            <p>Le Pack Partenaire se paie seulement quand votre site est en ligne. Le menu reste à vous, quoi qu’il arrive.</p>
+            <p>Oui : votre site est en ligne en 5 à 7 jours, et le Pack Partenaire se paie à ce moment-là. Non : vous ne payez rien, le menu reste en ligne gratuitement.</p>
             <span class="tag">0 F d’avance</span>
           </div>
+        </div>
+
+        <div id="test" class="trial" aria-labelledby="trial-title">
+          <h3 id="trial-title">Le test gratuit, en clair</h3>
+          <dl>
+            <div><dt>Vous recevez</dt><dd>Votre menu QR avec vos plats, vos prix et vos photos. Les QR sont posés sur vos tables, la commande arrive toute écrite sur votre WhatsApp.</dd></div>
+            <div><dt>Durée</dt><dd>3 semaines ou 10 commandes, selon ce qui arrive en premier.</dd></div>
+            <div><dt>Prix</dt><dd>0 F. Pas d’avance, pas d’engagement.</dd></div>
+            <div><dt>De votre côté</dt><dd>Laisser les QR sur les tables et partager le lien du menu sur votre statut WhatsApp.</dd></div>
+            <div><dt>Les chiffres</dt><dd>Je compte les commandes de mon côté. À la fin, on compare avec les vôtres.</dd></div>
+            <div><dt>Si c’est oui</dt><dd>Pack Partenaire à 90 000 F : votre site est en ligne en 5 à 7 jours, et vous payez à ce moment-là, après validation.</dd></div>
+            <div><dt>Si c’est non</dt><dd>Vous ne payez rien. Le menu reste en ligne gratuitement, à une adresse gratuite.</dd></div>
+            <div><dt>Places</dt><dd>5 restaurants à Ouagadougou, un test par restaurant.</dd></div>
+          </dl>
         </div>
       </div>
     </section>
@@ -187,7 +201,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <section id="demos" class="tray t-cobalt" aria-labelledby="demos-title">
       <div class="wrap">
         <div class="demos-head">
-          <h2 id="demos-title" class="h2">Trois restos de démo.<br>Tout fonctionne.</h2>
+          <h2 id="demos-title" class="h2">Trois exemples de restos.<br>Tout fonctionne.</h2>
           <p class="lede">Des restaurants fictifs, mais de vrais sites : menu, commande WhatsApp, réservation, horaires en direct. Essayez même l’espace restaurateur.</p>
         </div>
         <div class="demos">
@@ -214,7 +228,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <div class="pack-main">
         <h2 id="pack-title" class="h2">Pack Restaurant Partenaire</h2>
         <p class="lede">Pas juste un site : tout pour que vos clients commandent vraiment. Pour les <strong>5 premiers restaurants</strong>, sans rien payer d’avance.</p>
-        <p class="pack-test"><strong>D’abord, on teste chez vous, gratuitement.</strong> Je prépare votre menu avec vos plats et je pose les QR sur vos tables. Après 10 commandes (ou 3 semaines), je vous montre les chiffres. Vous décidez ensuite. Le menu reste à vous, quoi qu’il arrive.</p>
+        <p class="pack-test"><strong>D’abord, on teste chez vous, gratuitement.</strong> Je prépare votre menu avec vos plats et je pose les QR sur vos tables. Après 10 commandes ou 3 semaines, je vous montre les chiffres. Vous décidez ensuite. <a href="#test">Toutes les conditions du test</a></p>
         <ul class="pack-list">
           <li><div><b>Votre site de commande WhatsApp</b><small>Menu avec photos et prix, commande en 1 clic, bouton itinéraire, « Ouvert / Fermé » en direct, chevalets QR imprimés à votre nom, espace restaurateur</small></div><span class="v">75 000 F</span></li>
           {bonus.map((b) => (
@@ -230,8 +244,8 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <div class="line"><span>Valeur totale</span><s>170 000 F</s></div>
         <div class="line"><span>Prix normal</span><s>125 000 F</s></div>
         <p class="price">90 000 <small>F</small></p>
-        <p class="pay">0 F d’avance : vous payez en une fois, quand votre site est en ligne et validé par vous.</p>
-        <a class="btn btn-wa" href={WA_PACK} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+        <p class="pay">0 F d’avance : vous payez en une fois, quand votre site est en ligne (5 à 7 jours après votre oui) et validé par vous.</p>
+        <a class="btn btn-wa" href={WA_PACK} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « MENU » sur WhatsApp</a>
         <p class="roi">Exemple : 2 commandes de plus par jour × 2 500 F × 30 jours = 150 000 F.</p>
         </div>
       </aside>
@@ -297,16 +311,16 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <section class="tray t-red final" aria-labelledby="final-title">
       
       <div class="wrap">
-        <h2 id="final-title" class="h2">Voyez votre site avant de dire oui.</h2>
-        <p class="lede">Test gratuit chez vous : vos 10 premières commandes WhatsApp sont offertes. Un seul message suffit.</p>
+        <h2 id="final-title" class="h2">Voyez les commandes avant de dire oui.</h2>
+        <p class="lede">Test gratuit chez vous : votre menu QR, 0 F, jusqu’à 10 commandes ou 3 semaines. Un seul message suffit.</p>
         <ol>
-          <li>Vous m’écrivez « DÉMO »</li>
+          <li>Vous m’écrivez « MENU »</li>
           <li>Je réponds sous 2 heures</li>
-          <li>On parle de votre resto</li>
-          <li>Vous recevez un premier avis gratuit</li>
+          <li>Je pose votre menu QR</li>
+          <li>Vous voyez les chiffres, puis vous décidez</li>
         </ol>
         <div class="hero-actions">
-          <a class="btn btn-wa" href={WA_DEMO} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « DÉMO » sur WhatsApp</a>
+          <a class="btn btn-wa" href={WA_MENU} target="_blank" rel="noopener"><Fragment set:html={waIcon} />Écrire « MENU » sur WhatsApp</a>
         </div>
         <p class="ps"><strong>P.S.</strong> Pendant que vous lisez ceci, quelqu’un à Ouaga cherche « restaurant près de moi » et tombe sur votre concurrent. Après les 5 premiers restaurants, le Pack Partenaire passe à 125 000 F.</p>
       </div>
@@ -315,7 +329,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 
   <footer>
     <span>© 2026 Nour Digital · Sites web pour restaurants · Ouagadougou, Burkina Faso</span>
-    <a href={WA_DEMO} target="_blank" rel="noopener">WhatsApp : +226 44 60 87 89</a>
+    <a href={WA_MENU} target="_blank" rel="noopener">WhatsApp : +226 44 60 87 89</a>
   </footer>
 
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -324,7 +338,7 @@ const waIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q.replace(/[«»]/g, '').trim(), acceptedAnswer: { '@type': 'Answer', text: a } })),
   })} />
 
-  <a class="wa-float" href={WA_DEMO} target="_blank" rel="noopener" aria-label="Écrire à Nour Digital sur WhatsApp"><Fragment set:html={waIcon} /></a>
+  <a class="wa-float" href={WA_MENU} target="_blank" rel="noopener" aria-label="Écrire à Nour Digital sur WhatsApp"><Fragment set:html={waIcon} /></a>
 
 
   <script define:vars={{ DISHES: dishes }}>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Email.astro';
 import '../styles/email.css';
-const WA = `https://wa.me/22644608789?text=${encodeURIComponent('DÉMO. Bonjour Nour, je voudrais une démo gratuite pour mon restaurant.')}`;
+const WA = `https://api.whatsapp.com/send?phone=22644608789&text=${encodeURIComponent('MENU. Bonjour Nour, je voudrais tester le menu QR gratuit pour mon restaurant.')}`;
 ---
 <Layout title="Page introuvable | Nour Digital" description="Cette page n'existe pas. Retrouvez les sites web et menus QR pour restaurants de Nour Digital à Ouagadougou." noindex>
   <header class="nav">
@@ -12,7 +12,7 @@ const WA = `https://wa.me/22644608789?text=${encodeURIComponent('DÉMO. Bonjour 
     <p class="lede">La page que vous cherchez n’existe pas ou a changé d’adresse.</p>
     <div class="hero-actions">
       <a class="btn btn-white" href="/">Retour à l’accueil</a>
-      <a class="btn btn-wa" href={WA} target="_blank" rel="noopener">Écrire « DÉMO » sur WhatsApp</a>
+      <a class="btn btn-wa" href={WA} target="_blank" rel="noopener">Écrire « MENU » sur WhatsApp</a>
     </div>
   </main>
 </Layout>
