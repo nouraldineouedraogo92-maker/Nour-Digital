@@ -1,0 +1,17 @@
+{
+  "name": "La Vieille Marmite",
+  "short_name": "Vieille Marmite",
+  "description": "Menu et commandes WhatsApp — La Vieille Marmite, Zagtouli.",
+  "id": "/la-vieille-marmite/",
+  "start_url": "/la-vieille-marmite/",
+  "scope": "/la-vieille-marmite/",
+  "display": "standalone",
+  "background_color": "#F4EDE1",
+  "theme_color": "#1d1b1a",
+  "lang": "fr",
+  "icons": [
+    { "src": "/la-vieille-marmite/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/la-vieille-marmite/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/la-vieille-marmite/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
